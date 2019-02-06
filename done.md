@@ -1,4 +1,4 @@
-|User Story|Done Explantion|
+|User Story|Done Explanation|
 |---|---|
 |1|Have at least 200 parts total in our database.|
 |2|Be able to create an account that is stored in our database, create and save builds, and sign in using a username and password.|
