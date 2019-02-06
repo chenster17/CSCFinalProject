@@ -1,5 +1,14 @@
 # csc301project-empiredown
-csc301project-empiredown created by GitHub Classroom
+
+### product: PCEmpire
+
+| UTORID | Name | 
+| --- | --- |
+| Philip Rachwalski | Rachwal2 |
+| Albert Yang | Yangalb1 |
+| Jack He | Hejack1 |
+| Zhao Chen | Chenz131 |
+| Philip Correia | Correi90 |
 
 Our product will be a PC builders Guide website. Our website's objective is to assists people through the complicated process of building their own PC. people who may not have any experience of building a computer can look through our selection of pre-built computers, designed by our staff, at different price points. For those people, we also offer a page that details each component and the different generations that are compatible. A user with slightly more experience can have the chance to look through our vast inventory to design their own PC. Far more experienced individual, or people who have a PC build in mind, have the opportunity to create mock computer builds and post them on our website for others to review.
 
