@@ -59,17 +59,17 @@ Personas.pdf (max 8 marks)
 
 Process: process.md (max 10 marks)
   -Team organization (roles) divided clearly [2 marks max, 1 mark unclear, 0 marks if not done]
-   Your mark 0
+   Your mark 2
   -Decision making [2 marks max if described clearly, 1 mark if unclear, 0 marks if not done]
-   Your mark 0
+   Your mark 2
   -Prioritizing user stories [2 marks if clear and sound criteria used, 1 mak if somewhat clear criteria used, 0 marks if not done]
-   Your mark 0 
+   Your mark 2 
   -Meetings [2 marks if meeting described clearly, 1 mark if description is unclear, 0 marks if description is missing]
-   Your mark 0
+   Your mark 2
   -Next phase [2 marks if description is clear, 1 mark if somewhat clear, 0 marks if no description]
-   Your mark 0
+   Your mark 2
    
-   process.md mark: 0
+   process.md mark: 10
    NOTE: process.md not provided
    
 User experience: (max 4 marks)
@@ -83,6 +83,6 @@ User experience: (max 4 marks)
    User experience mark: 3
    
    
-Total mark for phase 1 : 30/42   
+Total mark for phase 1 : 40/42   
 	
 
