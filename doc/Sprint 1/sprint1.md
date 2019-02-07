@@ -15,10 +15,15 @@ We would also like to populate the database with sample data.
 
 ### Sprint Backlog
 1.) As a user, I want to have access to a large amount of parts so I can consider the most options when making purchases.
-* Design structure of database 
-* add respective tables
-* populate tables
+* Design structure of database (Jack He, Zhao Chen)
+* add respective tables (Jack He, Zhao Chen)
+* populate tables (Jack He, Zhao Chen)
+
+
 
 2.) As a user, I would like to have a pretty interface to look at.
-* set up main page
-* CSS styling
+* set up main page (Albert Yang)
+* CSS styling (Philip Correia)
+
+
+
