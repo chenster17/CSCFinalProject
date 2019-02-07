@@ -25,3 +25,27 @@ Collaborators:
 * Connect
 
 
+### Class name: API.js
+
+Parent class (if any): None
+
+Classname Subclasses (if any): None
+
+Responsibilities:
+* Hold API calls
+
+Collaborators:
+* TBA
+
+
+### Class name: 
+
+Parent class (if any): 
+
+Classname Subclasses (if any): 
+
+Responsibilities:
+* 
+
+Collaborators:
+* 
