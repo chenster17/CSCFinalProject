@@ -3,6 +3,7 @@ PRODUCT BACKLOG: **PCEMPIRE**
 __Complexity Scale:__
 We have decided to use a Fibonacci scale when rating the complexity of our user stories.
 A 1 on the scale represents a trivial task, and increasing numbers represent increasing complexities.
+In order to fit our complexity scale to Pivotal Tracker's, 2 or 3 is a 1, 5 or 8 is a 2 and 13 or 21 is a 3.  
 
 |User Story|Complexity Estimate|Priority|
 |---|---|---|
