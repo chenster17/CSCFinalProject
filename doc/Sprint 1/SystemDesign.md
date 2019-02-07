@@ -38,14 +38,14 @@ Collaborators:
 * TBA
 
 
-### Class name: 
+### Class name: Style.css
 
-Parent class (if any): 
+Parent class (if any): None
 
-Classname Subclasses (if any): 
+Classname Subclasses (if any): None
 
 Responsibilities:
-* 
+* contains themes and colours of Webpage
 
 Collaborators:
-* 
+* TBA
