@@ -8,6 +8,7 @@ February 6, 2019
 * Jack He: Hejack1
 * Zhao Chen: Chenz131 
 * Philip Correia:Correi90
+* Philip Rachwalski:Rachwal2
 
 ### Sprint Goal
 * our object for this sprint is for us to have a database set up, as well as a basic UI for user to interface with. 
@@ -19,11 +20,6 @@ We would also like to populate the database with sample data.
 * add respective tables (Jack He, Zhao Chen)
 * populate tables (Jack He, Zhao Chen)
 
-
-
 2.) As a user, I would like to have a pretty interface to look at.
 * set up main page (Albert Yang)
 * CSS styling (Philip Correia)
-
-
-
