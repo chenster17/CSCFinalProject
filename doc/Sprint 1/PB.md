@@ -21,3 +21,4 @@ In order to fit our complexity scale to Pivotal Tracker's, 2 or 3 is a 1, 5 or 8
 |As a beginner builder, I want to see professional build guides so I can have an idea where to start.|5|12|
 |As a builder, I want to share my completed build on **PCEMPIRE** or social media, so I can show off or help other people|13|13|
 |As an experienced builder, I want to leave comments on other people's build's so I can critque them and offer advice.|5|14|
+|As organization, we want a logo so that our customers can easily identify us among other PCBuilders.|3|15|
