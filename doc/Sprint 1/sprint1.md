@@ -19,6 +19,8 @@ We would also like to populate the database with sample data.
 * Design structure of database (Jack He, Zhao Chen)
 * add respective tables (Jack He, Zhao Chen)
 * populate tables (Jack He, Zhao Chen)
+* note: majority of this work was done on paper and inside mongo DB client, so it can't be tracked on gothub for the time being
+
 
 2.) As a user, I would like to have a pretty interface to look at.
 * set up main page (Albert Yang)
