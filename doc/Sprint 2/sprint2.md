@@ -35,13 +35,13 @@ On that webpage, we want to be able to filter by price and brand.
 * Adapt search algortithm
 * Update webpage
 
-5.) As a potential buyer, I want to filter availible CPUs shown to me so I can find components that fit my criteria.
+5.) As a potential buyer, I want to filter available CPUs shown to me so I can find components that fit my criteria.
 * Create filter sidebar
 * Add options to filter by brand
 * Add options to filter by price
 * Update webpage
 
-6.) As a potential buyer, I want to filter availible Motherboards shown to me so I can find components that fit my criteria.
+6.) As a potential buyer, I want to filter available Motherboards shown to me so I can find components that fit my criteria.
 * Adapt filter sidebar
 * Add options to filter by brand
 * Add options to filter by price
