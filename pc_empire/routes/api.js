@@ -1,14 +1,13 @@
 const express = require ('express');
 const router = express.Router();
-const PCE = require('../models/CPU');
+const CPU = require('../models/CPU');
 
 
 
 
-router.get("/todos", (req, res, next) => {
-  //this will return all the data, exposing only the id and action field to the client
-    const itemName = req.body.Name;
-    PCE.find({Name:itemName})
+router.get("/getAllCPUs", (req, res, next) => {
+  //this will return all the CPUs stored in the database
+        CPU.find({})
         .then(data => res.json(data))
         .catch(next)
 });
