@@ -1,0 +1,8 @@
+const CPU_ACTION = "CPU_ACTION";
+const CPU_ACTION_SUCCESS = "CPU_ACTION_SUCCESS";
+const CPU_ACTION_FAILURE = "CPU_ACTION_FAILURE";
+export const CPU_ACTION_TYPES = {
+    pending: CPU_ACTION,
+    success: CPU_ACTION_SUCCESS,
+    failure: CPU_ACTION_FAILURE
+};

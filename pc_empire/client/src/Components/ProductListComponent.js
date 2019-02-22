@@ -9,12 +9,26 @@ export default class ProductListComponent extends Component {
                 <thead>
                     <tr>
                         {
-                            this.props.headers.map(h => <th>{h}</th>)
+                            this.props.headers.map(h => <th key={`header-${h}`}>{h}</th>)
                         }
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>Products go here</tr>
+                    {
+                        this.props.products.map(p => {
+                            return(
+                                <tr>
+                                    <td>{`${p.Manufacturer} ${p.Name}`}</td>
+                                    <td>{p.Clock.substring(0, 7)}</td>
+                                    <td>{p.Cores}</td>
+                                    <td>{`${p.Power}W`}</td>
+                                    <td />
+                                    <td>{`\$${p.Price}`}</td>
+                                    <td />
+                                </tr>
+                            )
+                        })
+                    }
                 </tbody>
             </Table>
         );

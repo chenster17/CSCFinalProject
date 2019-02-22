@@ -12,7 +12,7 @@ const BUILD_HEADERS = [
     "Component",
     "Selection",
     "Price"
-]
+];
 
 export const HEADERS = {
     "CPU": CPU_HEADERS,

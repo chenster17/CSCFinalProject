@@ -11,7 +11,7 @@ export default class BuildPartsComponent extends Component {
                 <thead>
                     <tr>
                         {
-                            this.props.headers.map(h => <th>{h}</th>)
+                            this.props.headers.map(h => <th key={`header-${h}`}>{h}</th>)
                         }
                     </tr>
                 </thead>
@@ -19,7 +19,7 @@ export default class BuildPartsComponent extends Component {
                     {
                        this.props.productTypes.map(p => {
                            return(
-                               <tr>
+                               <tr key={`row-${p}`}>
                                    <td>{p}</td>
                                    <td>
                                        <ProductButtonComponent productType={p}/>
