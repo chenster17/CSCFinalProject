@@ -19,7 +19,7 @@ const logger = store => next => action => {
 };
 
 const store = createStore(allReducers, applyMiddleware(thunk, logger));
-
+//const store = createStore(allReducers, applyMiddleware(thunk));
 const RootApp = () => (
     <Provider store={store}>
         <App />
