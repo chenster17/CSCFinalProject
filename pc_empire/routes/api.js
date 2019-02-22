@@ -5,13 +5,13 @@ const Mobo = require('../models/Mobo');
 
 
 
-
-router.get("/getAllCPUs", (req, res, next) => {
-  //this will return all the CPUs stored in the database
-        CPU.find({})
+router.get("/getAllCPUs", (req,res, next) => {
+    //this will return all CPUs from the database
+    CPU.find({})
         .then(data => res.json(data))
         .catch(next)
 });
+
 router.get("/getAllMobos", (req, res, next) => {
     //this will return all the Mobos stored in the database
     Mobo.find({})
