@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-//create schema for todo
-const TodoSchema = new Schema({
+//create schema for pc_empire
+const EmpireSchema = new Schema({
   action: {
     type: String,
     required: [true, 'The todo text field is required']
   }
 })
 
-//create model for todo
-const Todo = mongoose.model('todo', TodoSchema);
+//create model for pc_empire
+const Pc_empire = mongoose.model('pc_empire', EmpireSchema);
 
-module.exports = Todo;
+module.exports = Pc_empire;
