@@ -43,14 +43,6 @@ router.get("/getCPUPrice", (req, res, next) => {
 });
 
 
-router.get("/todos", (req, res, next) => {
-    //this will return all the data, exposing only the id and action field to the client
-    const itemName = req.body.Name;
-    PCE.find({Name:itemName})
-        .then(data => res.json(data))
-        .catch(next)
-});
-
 router.post('/todos', (req, res, next) => {
   if(req.body.action){
     PCE.create(req.body)
