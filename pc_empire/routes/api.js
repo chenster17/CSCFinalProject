@@ -5,8 +5,6 @@ const router = express.Router();
 const CPU = require('../models/CPU');
 const Mobo = require('../models/Mobo');
 
-
-
 router.get("/getAllCPUs", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({})
