@@ -1,6 +1,7 @@
 const express = require ('express');
 const router = express.Router();
 const CPU = require('../models/CPU');
+const Mobo = require('../models/Mobo');
 
 
 
@@ -8,6 +9,12 @@ const CPU = require('../models/CPU');
 router.get("/getAllCPUs", (req, res, next) => {
   //this will return all the CPUs stored in the database
         CPU.find({})
+        .then(data => res.json(data))
+        .catch(next)
+});
+router.get("/getAllMobos", (req, res, next) => {
+    //this will return all the CPUs stored in the database
+    Mobo.find({})
         .then(data => res.json(data))
         .catch(next)
 });
