@@ -13,7 +13,7 @@ class App extends Component {
                 <NavBarComponent />
                 <BrowserRouter>
                     <div>
-                        <Route path="/home" component={MainPageContainer} />
+                        <Route path="/(home|)" component={MainPageContainer} />
                         <Route path="/list" component={BuildPartsContainer} />
                         <Route path="/products/:product_type" component={ProductListContainer} />
                     </div>
