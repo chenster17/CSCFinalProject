@@ -3,6 +3,7 @@
 const express = require ('express');
 const router = express.Router();
 const CPU = require('../models/CPU');
+const Mobo = require('../models/Mobo');
 
 
 
@@ -12,6 +13,7 @@ router.get("/getAllCPUs", (req, res, next) => {
         .then(data => res.json(data))
         .catch(next)
 });
+
 router.get("/getCPUBrand", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Manufacturer")
@@ -39,6 +41,13 @@ router.get("/getCPUPrice", (req, res, next) => {
 
             res.json(result.sort(function(a, b){return a-b}));
         })
+        .catch(next)
+});
+
+router.get("/getAllMobos", (req, res, next) => {
+    //this will return all the CPUs stored in the database
+    Mobo.find({})
+        .then(data => res.json(data))
         .catch(next)
 });
 
