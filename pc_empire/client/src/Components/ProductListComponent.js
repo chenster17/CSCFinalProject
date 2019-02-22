@@ -88,7 +88,13 @@ export default class ProductListComponent extends Component {
         );
     }
 }
-
+/* <td>{`${p.Manufacturer} ${p.Name}`}</td>
+                                    <td>{p.Clock.substring(0, 7)}</td>
+                                    <td>{p.Cores}</td>
+                                    <td>{`${p.Power}W`}</td>
+                                    <td />
+                                    <td>{`\$${p.Price}`}</td>
+                                    <td /> */
 ProductListComponent.propTypes = {
     brands: PropTypes.array.isRequired,
     handleCheck: PropTypes.func.isRequired,

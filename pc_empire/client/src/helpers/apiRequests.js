@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { CPU_ACTION_TYPES } from "./actionTypes";
-
+import { CPU_ACTION_TYPES, MOBO_ACTION_TYPES } from "./actionTypes";
 const server_url = "http://localhost:5000/";
 
 /*export const fetchAllCpus = (current) => {
@@ -22,6 +21,18 @@ export const fetchAllCpus = () => {
             })
             .catch(error => {
                 dispatch({type: CPU_ACTION_TYPES.failure, payload: error});
+            })
+    }
+};
+export const fetchAllMobos = () => {
+    return dispatch => {
+        dispatch({ type: MOBO_ACTION_TYPES.pending });
+        return axios.get(server_url + "api/getAllMobos")
+            .then(response => {
+                dispatch({type: MOBO_ACTION_TYPES.success, payload: response});
+            })
+            .catch(error => {
+                dispatch({type: MOBO_ACTION_TYPES.failure, payload: error});
             })
     }
 };

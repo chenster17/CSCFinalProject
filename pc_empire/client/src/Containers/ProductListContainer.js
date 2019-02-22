@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import ProductListComponent from "../Components/ProductListComponent";
 
-import { HEADERS } from "../helpers/tableHeaders";
+import { HEADERS, SEARCH_HEADERS } from "../helpers/tableHeaders";
 import PropTypes from "prop-types";
 
 import { connect } from 'react-redux';
-import { fetchAllCpus, fetchBrands, fetchPrices } from "../helpers/apiRequests";
+import { fetchAllCpus, fetchBrands, fetchPrices, fetchAllMobos } from "../helpers/apiRequests";
 import { handleSearch } from "../reducers/searchReducer";
 import { handleCheck, handleSliderChange } from "../reducers/filterReducer";
 
@@ -13,6 +13,7 @@ class ProductListContainer extends Component {
     static propTypes = {
         brands: PropTypes.array.isRequired,
         fetchAllCpus: PropTypes.func.isRequired,
+        fetchAllMobos: PropTypes.func.isRequired,
         fetchBrands: PropTypes.func.isRequired,
         fetchPrices: PropTypes.func.isRequired,
         handleCheck: PropTypes.func.isRequired,
@@ -24,6 +25,7 @@ class ProductListContainer extends Component {
     };
 
     componentDidMount() {
+        this.props.fetchAllMobos();
         this.props.fetchAllCpus();
         this.props.fetchBrands(this.props.productType);
         this.props.fetchPrices(this.props.productType);
@@ -67,6 +69,7 @@ const mapStateToProps = (state, ownProps) => {
         filteredProducts = filteredProducts.filter(p => p.Price >= low && p.Price <= high);
     }
     return {
+
         brands: state.brands,
         prices: state.prices,
         products: filteredProducts,
@@ -78,6 +81,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchAllCpus: () => {
             dispatch(fetchAllCpus());
+        },
+        fetchAllMobos: () => {
+            dispatch(fetchAllMobos());
         },
         fetchBrands: (productType) => {
             dispatch(fetchBrands(productType));
