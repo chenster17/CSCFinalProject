@@ -10,7 +10,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 //connect to the database
-mongoose.connect('mongodb://empireUser:dbpassword@pcempire-shard-00-00-bnzuk.mongodb.net:27017,pcempire-shard-00-01-bnzuk.mongodb.net:27017,pcempire-shard-00-02-bnzuk.mongodb.net:27017/test?ssl=true&replicaSet=PCEmpire-shard-0&authSource=admin&retryWrites=true', { useNewUrlParser: true  })
+mongoose.connect('mongodb://empireUser:dbpassword@pcempire-shard-00-00-bnzuk.mongodb.net:27017,pcempire-shard-00-01-bnzuk.mongodb.net:27017,pcempire-shard-00-02-bnzuk.mongodb.net:27017/PCEmpireBuild?ssl=true&replicaSet=PCEmpire-shard-0&authSource=admin&retryWrites=true', { useNewUrlParser: true  })
     .then(() => console.log(`Database connected successfully`))
     .catch(err => console.log(err));
 

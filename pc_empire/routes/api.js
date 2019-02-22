@@ -1,18 +1,16 @@
 const express = require ('express');
 const router = express.Router();
-const PCE = require('../models/PC_empire');
+const PCE = require('../models/CPU');
 
 
 
 
-router.get("/:productN", (req, res, next) => {
+router.get("/todos", (req, res, next) => {
   //this will return all the data, exposing only the id and action field to the client
-  const id = req.params.productN;
-
-  PCE.find({"Name":"I5-8400"})
-      .exec()
-      .then(data => console.log(data))
-      .catch(next)
+    const itemName = req.body.Name;
+    PCE.find({Name:itemName})
+        .then(data => res.json(data))
+        .catch(next)
 });
 
 router.post('/todos', (req, res, next) => {
