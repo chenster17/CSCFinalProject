@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import BuildPartsComponent from "../Components/BuildPartsComponent"
 
-import { HEADERS } from "../Helpers/TableHeaders";
-import { PRODUCT_TYPES } from "../Helpers/ProductTypes";
+import { HEADERS } from "../helpers/tableHeaders";
+import { PRODUCT_TYPES } from "../helpers/productTypes";
 
 export default class BuildPartsContainer extends Component {
     render() {

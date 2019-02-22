@@ -5,7 +5,7 @@ const Mobo = require('../models/Mobo');
 
 
 
-router.get("/getAllCPUs", (req,res, next) => {
+router.get("/getAllCPUs", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({})
         .then(data => res.json(data))
