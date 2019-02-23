@@ -6,19 +6,41 @@ const initialState = {
 };
 
 export const handleCheck = (event) => {
-    event.preventDefault();
-    const text = event.currentTarget[0].value;
+    const isChecked = event.currentTarget.checked;
+    const brand = event.currentTarget.name;
+    return isChecked ? dispatch => {
+        dispatch({ type: FILTER_BRAND_ACTION_TYPES.add, payload: brand });
+    } : dispatch => {
+        dispatch({ type: FILTER_BRAND_ACTION_TYPES.remove, payload: brand });
+    }
+};
+
+export const handleSliderChange = (event) => {
     return dispatch => {
-        dispatch({ type: SEARCH_ACTION_TYPES.success, payload: text });
+        dispatch({ type: FILTER_PRICE_ACTION_TYPES.change, payload: event });
     }
 };
 
 export const filterReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FILTER_BRAND_ACTION_TYPES.success:
-            return { ...state, brand: action.payload };
-        case FILTER_PRICE_ACTION_TYPES.success:
-            return { ...state, price: action.payload };
+        case FILTER_BRAND_ACTION_TYPES.add:
+            if (!state.brands.includes(action.payload)) {
+                return {
+                    ...state,
+                    brands: [...state.brands, action.payload]
+                };
+            }
+            return state;
+        case FILTER_BRAND_ACTION_TYPES.remove:
+            if (state.brands.includes(action.payload)) {
+                return {
+                    ...state,
+                    brands: state.brands.filter(brand => brand !== action.payload)
+                }
+            }
+            return state;
+        case FILTER_PRICE_ACTION_TYPES.change:
+            return { ...state, priceRange: action.payload };
         default:
             return state
     }
