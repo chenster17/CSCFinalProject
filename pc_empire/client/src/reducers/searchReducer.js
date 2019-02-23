@@ -1,6 +1,6 @@
 import { SEARCH_ACTION_TYPES } from "../helpers/actionTypes";
 
-export const handleSubmit = (event) => {
+export const handleSearch = (event) => {
     event.preventDefault();
     const text = event.currentTarget[0].value;
     return dispatch => {

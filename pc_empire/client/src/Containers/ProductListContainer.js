@@ -6,12 +6,14 @@ import PropTypes from "prop-types";
 
 import { connect } from 'react-redux';
 import { fetchAllCpus } from "../helpers/apiRequests";
-import { handleSubmit } from "../reducers/searchReducer";
+import { handleSearch } from "../reducers/searchReducer";
+import { handleCheck} from "../reducers/filterReducer";
 
 class ProductListContainer extends Component {
     static propTypes = {
         fetchAllCpus: PropTypes.func.isRequired,
-        handleSubmit: PropTypes.func.isRequired,
+        handleCheck: PropTypes.func.isRequired,
+        handleSearch: PropTypes.func.isRequired,
         products: PropTypes.array.isRequired
     };
 
@@ -25,7 +27,8 @@ class ProductListContainer extends Component {
             <div>
                 <ProductListComponent
                     headers={tableHeaders}
-                    handleSubmit={this.props.handleSubmit}
+                    handleCheck={this.props.handleCheck}
+                    handleSearch={this.props.handleSearch}
                     products={this.props.products}
                     productType={this.props.match.params.product_type}
                 />
@@ -50,8 +53,11 @@ const mapDispatchToProps = (dispatch) => {
         fetchAllCpus: () => {
             dispatch(fetchAllCpus());
         },
-        handleSubmit: (event) => {
-            dispatch(handleSubmit(event));
+        handleCheck: (event) => {
+            dispatch(handleCheck(event));
+        },
+        handleSearch: (event) => {
+            dispatch(handleSearch(event));
         }
     }
 };
