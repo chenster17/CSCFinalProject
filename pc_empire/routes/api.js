@@ -10,6 +10,21 @@ router.get("/getAllCPUs", (req, res, next) => {
         .then(data => res.json(data))
         .catch(next)
 });
+router.get("/getCPUBrand", (req, res, next) => {
+    //this will return all CPUs from the database
+    CPU.find({},"Manufacturer")
+        .then(data => {
+            const result =[];
+          for (var i in data) {
+              var obj = JSON.parse(JSON.stringify(data[i]));
+              if(!result.includes(obj.Manufacturer))
+                  result.push(obj.Manufacturer);
+          }
+          res.json(result);
+        })
+        .catch(next)
+});
+
 
 router.get("/todos", (req, res, next) => {
     //this will return all the data, exposing only the id and action field to the client
