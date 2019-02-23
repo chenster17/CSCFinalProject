@@ -24,15 +24,15 @@ class ProductListContainer extends Component {
         const searchHeaders = SEARCH_HEADERS[this.props.match.params.product_type];
         return tableHeaders ? (
             <div>
-                <ProductListComponent headers={tableHeaders} sheaders={searchHeaders} products={this.props.products[this.props.match.params.product_type]}/>
+                <ProductListComponent headers={tableHeaders} sheaders={searchHeaders} products={this.props.products}/>
             </div>
         ) : <div>Invalid Product Type</div>;
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        products: state
+        products: state[ownProps.match.params.product_type]
     }
 };
 
