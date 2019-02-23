@@ -37,7 +37,7 @@ router.get("/getCPUPrice", (req, res, next) => {
                     result.push(obj.Price);
             }
 
-            res.json(result.sort());
+            res.json(result.sort(function(a, b){return a-b}));
         })
         .catch(next)
 });
