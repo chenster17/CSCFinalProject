@@ -1,3 +1,5 @@
+
+
 const express = require ('express');
 const router = express.Router();
 const CPU = require('../models/CPU');
@@ -21,6 +23,21 @@ router.get("/getCPUBrand", (req, res, next) => {
                   result.push(obj.Manufacturer);
           }
           res.json(result);
+        })
+        .catch(next)
+});
+router.get("/getCPUPrice", (req, res, next) => {
+    //this will return all CPUs from the database
+    CPU.find({},"Price")
+        .then(data => {
+            const result =[];
+            for (var i in data) {
+                var obj = JSON.parse(JSON.stringify(data[i]));
+                if(!result.includes(obj.Price))
+                    result.push(obj.Price);
+            }
+
+            res.json(result.sort());
         })
         .catch(next)
 });
