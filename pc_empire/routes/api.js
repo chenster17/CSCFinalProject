@@ -12,6 +12,7 @@ router.get("/getAllCPUs", (req, res, next) => {
         .then(data => res.json(data))
         .catch(next)
 });
+
 router.get("/getCPUBrand", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Manufacturer")
@@ -74,7 +75,7 @@ router.get("/getCPUClock", (req, res, next) => {
 });
 router.get("/getCPUCores", (req, res, next) => {
     //this will return all CPUs from the database
-    CPU.find({},"Clock")
+    CPU.find({},"Cores")
         .then(data => {
             const result =[];
           for (var i in data) {
@@ -100,20 +101,7 @@ router.get("/getCPUPower", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getCPUStock_Cooler", (req, res, next) => {
-    //this will return all CPUs from the database
-    CPU.find({},"Power")
-        .then(data => {
-            const result =[];
-          for (var i in data) {
-              var obj = JSON.parse(JSON.stringify(data[i]));
-              if(!result.includes(obj.Stock_Cooler))
-                  result.push(obj.Stock_Cooler);
-          }
-          res.json(result);
-        })
-        .catch(next)
-});
+
 router.get("/getCPUPrice", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Price")
