@@ -52,7 +52,7 @@ export default class ProductListComponent extends Component {
                                 domain={
                                     this.props.prices.length > 1 ?
                                         [0, this.props.prices[this.props.prices.length - 1]] :
-                                        [0, 500]
+                                        [0, 100]
                                 }
                                 handleSliderChange={this.props.handleSliderChange}
                             />
@@ -101,6 +101,7 @@ ProductListComponent.propTypes = {
     handleSearch: PropTypes.func.isRequired,
     handleSliderChange: PropTypes.func.isRequired,
     headers: PropTypes.array.isRequired,
+    searchHeaders: PropTypes.array.isRequired
     prices: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
     products: PropTypes.array.isRequired,
     productType: PropTypes.string.isRequired
