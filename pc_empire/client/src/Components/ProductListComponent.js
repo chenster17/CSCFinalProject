@@ -101,7 +101,7 @@ ProductListComponent.propTypes = {
     handleSearch: PropTypes.func.isRequired,
     handleSliderChange: PropTypes.func.isRequired,
     headers: PropTypes.array.isRequired,
-    searchHeaders: PropTypes.array.isRequired
+    searchHeaders: PropTypes.array.isRequired,
     prices: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
     products: PropTypes.array.isRequired,
     productType: PropTypes.string.isRequired
