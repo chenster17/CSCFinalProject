@@ -12,7 +12,7 @@ router.get("/getAllCPUs", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getCPUBrand", (req, res, next) => {
+router.get("/getCPUBrands", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Manufacturer")
         .then(data => {
@@ -26,7 +26,7 @@ router.get("/getCPUBrand", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getCPUPrice", (req, res, next) => {
+router.get("/getCPUPrices", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Price")
         .then(data => {
@@ -49,7 +49,7 @@ router.get("/getAllMobos", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getMoboBrand", (req, res, next) => {
+router.get("/getMotherboardBrands", (req, res, next) => {
     //this will return all CPUs from the database
     Mobo.find({},"Manufacturer")
         .then(data => {
@@ -63,7 +63,7 @@ router.get("/getMoboBrand", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getMoboPrice", (req, res, next) => {
+router.get("/getMotherboardPrices", (req, res, next) => {
     //this will return all CPUs from the database
     Mobo.find({},"Price")
         .then(data => {

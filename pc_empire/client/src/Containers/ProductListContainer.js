@@ -33,11 +33,13 @@ class ProductListContainer extends Component {
 
     render() {
         const tableHeaders = HEADERS[this.props.productType];
+        const search_Headers = SEARCH_HEADERS[this.props.productType];
         return tableHeaders ? (
             <div>
                 <ProductListComponent
                     brands={this.props.brands}
                     headers={tableHeaders}
+                    searchHeaders={search_Headers}
                     handleCheck={this.props.handleCheck}
                     handleSearch={this.props.handleSearch}
                     handleSliderChange={this.props.handleSliderChange}
@@ -51,7 +53,7 @@ class ProductListContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    const products = state.cpus;
+    const products = state[ownProps.match.params.product_type];
     let filteredProducts = products.filter(p => {
         const fullName = `${p.Manufacturer} ${p.Name}`.toLowerCase();
         return fullName.includes(state.search.toLowerCase());

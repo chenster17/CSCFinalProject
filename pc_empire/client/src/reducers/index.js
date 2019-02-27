@@ -9,7 +9,7 @@ import { searchReducer } from "./searchReducer";
 
 const allReducers = combineReducers({
     brands: brandsReducer,
-    cpus: cpuReducer,
+    CPU: cpuReducer,
     Motherboard: moboReducer,
     filter: filterReducer,
     prices: pricesReducer,
