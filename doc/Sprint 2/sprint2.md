@@ -18,31 +18,33 @@ On that webpage, we want to be able to filter by price and brand.
 1.) As a user, I want to see CPUs displayed on the website.
 * Have CPUs stored in the database (Philip R.)
 * Get CPU information from database via api (Zhao, Jack)
-* Have a webpage to display CPUs (Albert, Philip C.)
+* Have a webpage to display CPUs (Albert)
 
 2.) As a user, I want to see Motherboards displayed on the website.
 * Have Motherboards stored in the database (Philip R.)
-* Get Motherboard information from database via api (Zhao, Jack)
-* Have a webpage to display Motherboards (Albert, Philip C.)
+* Get Motherboard information from database via api (Zhao)
+* Have a webpage to display Motherboards (Philip C.)
+
+### note: adding information to the database in stories 1 and 2 can't be tracked on github
 
 3.) As a knowledgable user, I want to search for specific CPUs by name to save time and find exactly what I want.
-* Create search bar widget (Albert, Philip C.)
-* Design search algortithm (Philip R., Zhao, Jack)
-* Update webpage 
+* Create search bar widget (Albert)
+* Design search algortithm (Albert)
+
 
 4.) As a knowledgable user, I want to search for specific Motherboards by name to save time and find exactly what I want.
-* Adapt search bar widget (Albert, Philip C.)
-* Adapt search algortithm (Philip R.)
-* Update webpage
+* Adapt search bar widget (Philip C.)
+* Adapt search algortithm (Philip C.)
+
 
 5.) As a potential buyer, I want to filter available CPUs shown to me so I can find components that fit my criteria.
-* Create filter sidebar (Albert, Philip C.)
-* Add options to filter by brand (Philip R.)
-* Add options to filter by price (Philip R.)
-* Update webpage 
+* Create filter sidebar (Albert)
+* Add options to filter by brand (Zhao, Albert)
+* Add options to filter by price (Zhao, Albert)
+
 
 6.) As a potential buyer, I want to filter available Motherboards shown to me so I can find components that fit my criteria.
-* Adapt filter sidebar (Albert, Philip C.)
-* Add options to filter by brand (Jack)
-* Add options to filter by price (Jack)
-* Update webpage
+* Adapt filter sidebar (Philip C.)
+* Add options to filter by brand (Zhao, Philip C.)
+* Add options to filter by price (Zhao, Philip C.)
+
