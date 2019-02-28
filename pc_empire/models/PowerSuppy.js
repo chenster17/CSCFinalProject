@@ -2,17 +2,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //create schema for pc_empire
-const CaseSchema = new Schema({
+const PowerSupplySchema = new Schema({
     Manufacturer: String,
     Name: String,
-    Color: String,
-    FormFactor: String,
-    USB3Dot0Slots: Boolean,
+    Power: Number,
+    EfficiencyRating: Boolean,
     Price: Number
 });
 
 //create model for pc_empire
 
-const Case = mongoose.model('Case', CaseSchema,'Case');
+const PowerSupply = mongoose.model('PowerSupply', CaseSchema,'PowerSupply');
 
-module.exports = Case;
+module.exports = PowerSupply;
+
