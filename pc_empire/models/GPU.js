@@ -15,6 +15,6 @@ const GPUSchema = new Schema({
 
 //create model for pc_empire
 
-const GPU = mongoose.model('GPU', CaseSchema,'GPU');
+const GPU = mongoose.model('GPU', GPUSchema,'GPU');
 
 module.exports = GPU;
