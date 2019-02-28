@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+
 mongoose.set('useFindAndModify', false);
 const CPUroutes = require('./routes/cpu');
 const Moboroutes = require('./routes/motherboard');
@@ -10,6 +11,7 @@ const GPUroutes = require('./routes/gpu');
 const RAMroutes = require('./routes/ram');
 const Storageroutes = require('./routes/storage');
 const Buildroutes = require('./routes/build');
+
 const path = require('path');
 require('dotenv').config();
 
