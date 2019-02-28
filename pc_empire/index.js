@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const routes = require('./routes/api');
+const CPUroutes = require('./routes/CPUapi');
+const Moboroutes = require('./routes/Moboapi');
 const path = require('path');
 require('dotenv').config();
 
@@ -25,7 +26,8 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-app.use('/api', routes);
+app.use('/CPUapi', CPUroutes);
+app.use('/Moboapi', Moboroutes);
 
 app.use((err, req, res, next) => {
   console.log(err);
