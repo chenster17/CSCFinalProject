@@ -6,10 +6,19 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
+import allReducers from "./reducers/index";
 
-import allReducers from './reducers/index';
+const logger = store => next => action => {
+    console.group(action.type);
+    console.log('current state', store.getState());
+    console.log('dispatching', action);
+    let result = next(action);
+    console.log('next state', store.getState());
+    console.groupEnd(action.type);
+    return result
+};
 
-const store = createStore(allReducers, applyMiddleware(thunk));
+const store = createStore(allReducers, applyMiddleware(thunk, logger));
 
 const RootApp = () => (
     <Provider store={store}>

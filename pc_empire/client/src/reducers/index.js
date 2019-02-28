@@ -1,11 +1,16 @@
 import { combineReducers } from "redux";
-import { cpuReducer } from './cpuReducer';
+import { brandsReducer } from "./brandsReducer";
+import { cpuReducer } from "./cpuReducer";
+import { filterReducer } from "./filterReducer";
+import { pricesReducer }  from "./pricesReducer";
 import { searchReducer } from "./searchReducer";
 
-import { moboReducer } from './moboReducer';
 
 const allReducers = combineReducers({
+    brands: brandsReducer,
     cpus: cpuReducer,
+    filter: filterReducer,
+    prices: pricesReducer,
     search: searchReducer
 });
 
