@@ -6,8 +6,8 @@ const CaseSchema = new Schema({
     Manufacturer: String,
     Name: String,
     Color: String,
-    FormFactor: String,
-    USB3Dot0Slots: Boolean,
+    Form_Factor: String,
+    //USB3Dot0Slots: Boolean,
     Price: Number
 });
 

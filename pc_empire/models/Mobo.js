@@ -12,6 +12,7 @@ const MoboSchema = new Schema({
     Form_Factor:String,
     PCIE:String,
     SATA3:Number,
+   // Mdot2:Number,
     Wifi: Boolean,
     Price: Number
 });

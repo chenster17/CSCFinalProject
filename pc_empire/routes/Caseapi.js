@@ -24,7 +24,7 @@ router.get("/getBrands", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getName", (req, res, next) => {
+router.get("/getNames", (req, res, next) => {
     //this will return all CPUs from the database
     Case.find({},"Name")
         .then(data => {
@@ -39,35 +39,49 @@ router.get("/getName", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getColor", (req, res, next) => {
+router.get("/getColors", (req, res, next) => {
     //this will return all CPUs from the database
     Case.find({},"Color")
         .then(data => {
             const result =[];
             for (var i in data) {
                 var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.FormFactor))
-                    result.push(obj.FormFactor);
+                if(!result.includes(obj.Color))
+                    result.push(obj.Color);
             }
             res.json(result);
         })
         .catch(next)
 });
 
-router.get("/getFormFactor", (req, res, next) => {
+router.get("/getFormFactors", (req, res, next) => {
     //this will return all CPUs from the database
-    Case.find({},"Form Factor")
+    Case.find({},"Form_Factor")
         .then(data => {
             const result =[];
             for (var i in data) {
                 var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.FormFactor))
-                    result.push(obj.FormFactor);
+                if(!result.includes(obj.Form_Factor))
+                    result.push(obj.Form_Factor);
             }
             res.json(result);
         })
         .catch(next)
 });
+router.get("/getPrices", (req, res, next) => {
+    //this will return all CPUs from the database
+    Case.find({},"Price")
+        .then(data => {
+            const result =[];
+            for (var i in data) {
+                var obj = JSON.parse(JSON.stringify(data[i]));
+                if(!result.includes(obj.Price))
+                    result.push(obj.Price);
+            }
 
+            res.json(result.sort(function(a, b){return a-b}));
+        })
+        .catch(next)
+});
 
 module.exports = router;

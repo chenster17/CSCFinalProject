@@ -24,7 +24,7 @@ router.get("/getBrands", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getName", (req, res, next) => {
+router.get("/getNames", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Name")
         .then(data => {
@@ -39,7 +39,7 @@ router.get("/getName", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getSocket", (req, res, next) => {
+router.get("/getSockets", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Socket")
         .then(data => {
@@ -54,7 +54,7 @@ router.get("/getSocket", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getClock", (req, res, next) => {
+router.get("/getClocks", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Clock")
         .then(data => {
@@ -82,7 +82,7 @@ router.get("/getCores", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getPower", (req, res, next) => {
+router.get("/getPowers", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Power")
         .then(data => {

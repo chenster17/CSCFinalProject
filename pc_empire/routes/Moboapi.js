@@ -41,7 +41,7 @@ router.get("/getPrices", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getName", (req, res, next) => {
+router.get("/getNames", (req, res, next) => {
     //this will return all CPUs from the database
     Mobo.find({},"Name")
         .then(data => {
@@ -55,7 +55,7 @@ router.get("/getName", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getCPUSocket", (req, res, next) => {
+router.get("/getCPUSockets", (req, res, next) => {
     //this will return all CPUs from the database
     Mobo.find({},"CPU_Socket")
         .then(data => {
@@ -69,7 +69,7 @@ router.get("/getCPUSocket", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getCPUChipset", (req, res, next) => {
+router.get("/getCPUChipsets", (req, res, next) => {
     //this will return all CPUs from the database
     Mobo.find({},"CPU_Chipset")
         .then(data => {
@@ -83,7 +83,7 @@ router.get("/getCPUChipset", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getRAM", (req, res, next) => {
+router.get("/getRAMs", (req, res, next) => {
     //this will return all CPUs from the database
     Mobo.find({},"RAM")
         .then(data => {
@@ -111,7 +111,7 @@ router.get("/getRAMSlots", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getFormFactor", (req, res, next) => {
+router.get("/getFormFactors", (req, res, next) => {
     //this will return all CPUs from the database
     Mobo.find({},"Form_Factor")
         .then(data => {
@@ -125,7 +125,7 @@ router.get("/getFormFactor", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getPCIE", (req, res, next) => {
+router.get("/getPCIEs", (req, res, next) => {
     //this will return all CPUs from the database
     Mobo.find({},"PCIE")
         .then(data => {
@@ -139,7 +139,7 @@ router.get("/getPCIE", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getSATA3", (req, res, next) => {
+router.get("/getSATA3s", (req, res, next) => {
     //this will return all CPUs from the database
     Mobo.find({},"SATA3")
         .then(data => {
