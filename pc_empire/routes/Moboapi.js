@@ -43,7 +43,7 @@ router.get("/getPrices", (req, res, next) => {
 
 router.get("/getName", (req, res, next) => {
     //this will return all CPUs from the database
-    mobo.find({},"Name")
+    Mobo.find({},"Name")
         .then(data => {
             const result =[];
             for (var i in data) {
@@ -57,13 +57,13 @@ router.get("/getName", (req, res, next) => {
 });
 router.get("/getCPUSocket", (req, res, next) => {
     //this will return all CPUs from the database
-    mobo.find({},"CPU Socket")
+    Mobo.find({},"CPU_Socket")
         .then(data => {
             const result =[];
             for (var i in data) {
                 var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.CPUSocket))
-                    result.push(obj.CPUSocket);
+                if(!result.includes(obj.CPU_Socket))
+                    result.push(obj.CPU_Socket);
             }
             res.json(result);
         })
@@ -71,13 +71,13 @@ router.get("/getCPUSocket", (req, res, next) => {
 });
 router.get("/getCPUChipset", (req, res, next) => {
     //this will return all CPUs from the database
-    mobo.find({},"CPU Chipset")
+    Mobo.find({},"CPU_Chipset")
         .then(data => {
             const result =[];
             for (var i in data) {
                 var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.CPUChipset))
-                    result.push(obj.CPUChipset);
+                if(!result.includes(obj.CPU_Chipset))
+                    result.push(obj.CPU_Chipset);
             }
             res.json(result);
         })
@@ -85,7 +85,7 @@ router.get("/getCPUChipset", (req, res, next) => {
 });
 router.get("/getRAM", (req, res, next) => {
     //this will return all CPUs from the database
-    mobo.find({},"RAM")
+    Mobo.find({},"RAM")
         .then(data => {
             const result =[];
             for (var i in data) {
@@ -97,15 +97,15 @@ router.get("/getRAM", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getRAMSlot", (req, res, next) => {
+router.get("/getRAMSlots", (req, res, next) => {
     //this will return all CPUs from the database
-    mobo.find({},"RAM Slots")
+    Mobo.find({},"RAM_Slots")
         .then(data => {
             const result =[];
             for (var i in data) {
                 var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.RAMSlot))
-                    result.push(obj.RAMSlot);
+                if(!result.includes(obj.RAM_Slots))
+                    result.push(obj.RAM_Slots);
             }
             res.json(result.sort(function(a, b){return a-b}));
         })
@@ -113,13 +113,13 @@ router.get("/getRAMSlot", (req, res, next) => {
 });
 router.get("/getFormFactor", (req, res, next) => {
     //this will return all CPUs from the database
-    mobo.find({},"Form Factor")
+    Mobo.find({},"Form_Factor")
         .then(data => {
             const result =[];
             for (var i in data) {
                 var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.FormFactor))
-                    result.push(obj.FormFactor);
+                if(!result.includes(obj.Form_Factor))
+                    result.push(obj.Form_Factor);
             }
             res.json(result);
         })
@@ -127,7 +127,7 @@ router.get("/getFormFactor", (req, res, next) => {
 });
 router.get("/getPCIE", (req, res, next) => {
     //this will return all CPUs from the database
-    mobo.find({},"PCIE")
+    Mobo.find({},"PCIE")
         .then(data => {
             const result =[];
             for (var i in data) {
@@ -141,7 +141,7 @@ router.get("/getPCIE", (req, res, next) => {
 });
 router.get("/getSATA3", (req, res, next) => {
     //this will return all CPUs from the database
-    mobo.find({},"SATA3")
+    Mobo.find({},"SATA3")
         .then(data => {
             const result =[];
             for (var i in data) {
@@ -153,9 +153,10 @@ router.get("/getSATA3", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getMotherboardMdot2", (req, res, next) => {
+/*
+router.get("/getMdot2", (req, res, next) => {
     //this will return all CPUs from the database
-    mobo.find({},"M.2")
+    Mobo.find({},"M.2")
         .then(data => {
             const result =[];
             for (var i in data) {
@@ -167,9 +168,10 @@ router.get("/getMotherboardMdot2", (req, res, next) => {
         })
         .catch(next)
 });
+*/
 router.get("/getPrices", (req, res, next) => {
     //this will return all CPUs from the database
-    mobo.find({},"Price")
+    Mobo.find({},"Price")
         .then(data => {
             const result =[];
             for (var i in data) {

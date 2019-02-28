@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const CPUroutes = require('./routes/CPUapi');
 const Moboroutes = require('./routes/Moboapi');
+//const Caseroutes = require('./routes/Caseapi');
 const path = require('path');
 require('dotenv').config();
 
@@ -28,6 +29,7 @@ app.use(bodyParser.json());
 
 app.use('/CPUapi', CPUroutes);
 app.use('/Moboapi', Moboroutes);
+//app.use('/Caseapi', Caseroutes);
 
 app.use((err, req, res, next) => {
   console.log(err);

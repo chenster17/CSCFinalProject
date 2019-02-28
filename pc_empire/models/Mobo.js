@@ -5,14 +5,13 @@ const Schema = mongoose.Schema;
 const MoboSchema = new Schema({
     Manufacturer: String,
     Name: String,
-    CPUSocket: String,
-    CPUChipset: String,
+    CPU_Socket: String,
+    CPU_Chipset: String,
     RAM: String,
-    RAMSlot: String,
-    FormFactor:String,
+    RAM_Slots: Number,
+    Form_Factor:String,
     PCIE:String,
     SATA3:Number,
-    Mdot2:Number,
     Wifi: Boolean,
     Price: Number
 });
