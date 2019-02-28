@@ -5,12 +5,13 @@ import { HEADERS, SEARCH_HEADERS } from "../helpers/tableHeaders";
 import PropTypes from "prop-types";
 
 import { connect } from 'react-redux';
-import { fetchAllCpus, fetchAllMobos } from "../helpers/apiRequests";
+import { fetchAllCpus } from "../helpers/apiRequests";
+import { handleSubmit } from "../reducers/searchReducer";
 
 class ProductListContainer extends Component {
     static propTypes = {
         fetchAllCpus: PropTypes.func.isRequired,
-        fetchAllMobos: PropTypes.func.isRequired,
+        handleSubmit: PropTypes.func.isRequired,
         products: PropTypes.array.isRequired
     };
 
@@ -24,16 +25,25 @@ class ProductListContainer extends Component {
         const searchHeaders = SEARCH_HEADERS[this.props.match.params.product_type];
         return tableHeaders ? (
             <div>
-                <ProductListComponent headers={tableHeaders} sheaders={searchHeaders} products={this.props.products}/>
+                <ProductListComponent
+                    headers={tableHeaders}
+                    handleSubmit={this.props.handleSubmit}
+                    products={this.props.products}
+                    productType={this.props.match.params.product_type}
+                />
             </div>
         ) : <div>Invalid Product Type</div>;
     }
 }
 
-
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
+    const products = state.cpus;
+    const filteredProducts = products.filter(p => {
+        const fullName = `${p.Manufacturer} ${p.Name}`.toLowerCase();
+        return fullName.includes(state.search.toLowerCase());
+    });
     return {
-        products: state[ownProps.match.params.product_type]
+        products: filteredProducts
     }
 };
 
@@ -42,8 +52,8 @@ const mapDispatchToProps = (dispatch) => {
         fetchAllCpus: () => {
             dispatch(fetchAllCpus());
         },
-        fetchAllMobos: () => {
-            dispatch(fetchAllMobos());
+        handleSubmit: (event) => {
+            dispatch(handleSubmit(event));
         }
     }
 };

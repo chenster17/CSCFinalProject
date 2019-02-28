@@ -1,45 +1,59 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Table } from "react-bootstrap";
+import { Button, Col, Form, Table } from "react-bootstrap";
 
 export default class ProductListComponent extends Component {
     render() {
         return (
-            <Table striped>
-                <thead>
-                    <tr>
+            <div>
+                <Form
+                    onSubmit={event => this.props.handleSubmit(event)}
+                >
+                    <Form.Row>
+                        <Form.Group as={Col} md="4" controlId="productSearch">
+                            <Form.Control
+                                required
+                                type="text"
+                                placeholder={`Search ${this.props.productType}s`}
+                            />
+                        </Form.Group>
+                        <Button type="submit">Search</Button>
+                    </Form.Row>
+                </Form>
+                <Table striped>
+                    <thead>
+                        <tr>
+                            {
+                                this.props.headers.map(h => <th key={`header-${h}`}>{h}</th>)
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
                         {
-                            this.props.headers.map(h => <th key={`header-${h}`}>{h}</th>)
+                            this.props.products.map(p => {
+                                return(
+                                    <tr>
+                                        <td>{`${p.Manufacturer} ${p.Name}`}</td>
+                                        <td>{p.Clock.substring(0, 7)}</td>
+                                        <td>{p.Cores}</td>
+                                        <td>{`${p.Power}W`}</td>
+                                        <td />
+                                        <td>{`\$${p.Price}`}</td>
+                                        <td />
+                                    </tr>
+                                )
+                            })
                         }
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        this.props.products.map(p => {
-                            return(
-                                <tr>
-                                    {
-                                        this.props.sheaders.map(h =>
-                                        <td>{p[h]}</td>)
-                                    }
-                                </tr>
-                            )
-                        })
-                    }
-                </tbody>
-            </Table>
+                    </tbody>
+                </Table>
+            </div>
         );
     }
 }
-/* <td>{`${p.Manufacturer} ${p.Name}`}</td>
-                                    <td>{p.Clock.substring(0, 7)}</td>
-                                    <td>{p.Cores}</td>
-                                    <td>{`${p.Power}W`}</td>
-                                    <td />
-                                    <td>{`\$${p.Price}`}</td>
-                                    <td /> */
+
 ProductListComponent.propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
     headers: PropTypes.array.isRequired,
     products: PropTypes.array.isRequired,
-    sheaders: PropTypes.array.isRequired
+    productType: PropTypes.string.isRequired
 }

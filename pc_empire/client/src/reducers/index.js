@@ -1,11 +1,12 @@
 import { combineReducers } from "redux";
 import { cpuReducer } from './cpuReducer';
+import { searchReducer } from "./searchReducer";
 
 import { moboReducer } from './moboReducer';
 
 const allReducers = combineReducers({
-    CPU: cpuReducer,
-    Motherboard: moboReducer
+    cpus: cpuReducer,
+    search: searchReducer
 });
 
 export default allReducers;
