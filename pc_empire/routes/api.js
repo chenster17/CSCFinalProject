@@ -1,8 +1,7 @@
 const express = require ('express');
 const router = express.Router();
 const CPU = require('../models/CPU');
-
-
+const Mobo = require('../models/Mobo');
 
 router.get("/getAllCPUs", (req, res, next) => {
     //this will return all CPUs from the database
@@ -11,14 +10,13 @@ router.get("/getAllCPUs", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/todos", (req, res, next) => {
-    //this will return all the data, exposing only the id and action field to the client
-    const itemName = req.body.Name;
-    PCE.find({Name:itemName})
+router.get("/getAllMobos", (req, res, next) => {
+    //this will return all the Mobos stored in the database
+    Mobo.find({})
         .then(data => res.json(data))
         .catch(next)
 });
-
+/*
 router.post('/todos', (req, res, next) => {
   if(req.body.action){
     PCE.create(req.body)
@@ -36,5 +34,5 @@ router.delete('/todos/:id', (req, res, next) => {
     .then(data => res.json(data))
     .catch(next)
 })
-
+*/
 module.exports = router;

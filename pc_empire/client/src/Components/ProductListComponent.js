@@ -18,13 +18,10 @@ export default class ProductListComponent extends Component {
                         this.props.products.map(p => {
                             return(
                                 <tr>
-                                    <td>{`${p.Manufacturer} ${p.Name}`}</td>
-                                    <td>{p.Clock.substring(0, 7)}</td>
-                                    <td>{p.Cores}</td>
-                                    <td>{`${p.Power}W`}</td>
-                                    <td />
-                                    <td>{`\$${p.Price}`}</td>
-                                    <td />
+                                    {
+                                        this.props.sheaders.map(h =>
+                                        <td>{p[h]}</td>)
+                                    }
                                 </tr>
                             )
                         })
@@ -34,8 +31,15 @@ export default class ProductListComponent extends Component {
         );
     }
 }
-
+/* <td>{`${p.Manufacturer} ${p.Name}`}</td>
+                                    <td>{p.Clock.substring(0, 7)}</td>
+                                    <td>{p.Cores}</td>
+                                    <td>{`${p.Power}W`}</td>
+                                    <td />
+                                    <td>{`\$${p.Price}`}</td>
+                                    <td /> */
 ProductListComponent.propTypes = {
     headers: PropTypes.array.isRequired,
-    products: PropTypes.array.isRequired
+    products: PropTypes.array.isRequired,
+    sheaders: PropTypes.array.isRequired
 }
