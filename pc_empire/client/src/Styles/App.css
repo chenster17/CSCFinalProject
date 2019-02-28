@@ -2,12 +2,53 @@
   text-align: center;
   padding: 10px;
   display: inline-block;
-  width: 80%;
+  width: 90%;
   margin-top: 10px;
   background-color: lightgray;
   height: 850px;
 }
-
+.container{
+    max-width: 100%;
+    margin-right: 0px;
+    margin-left: 0px;
+    position: relative;
+}
+.row{
+    position: relative;
+    width:100%;
+    margin:0px;
+}
+#itemSearchBar{
+    height: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#itemSearchBar>div>form>div>div{
+    margin-bottom: 0px;
+}
+#filterItems{
+    position: static;
+    padding: 0px;
+    width: 15%;
+    flex-grow: 0;
+    flex-basis: 20%;
+}
+.filterItemLabel{
+    height: 25px;
+}
+.filterBrand{
+    margin-left: 15px;
+}
+.filterPrice>div{
+    margin-left: 25px;
+    width: 100%;
+}
+#itemDisplay{
+    position: relative;
+    padding: 0px;
+    max-width: 80%;
+    flex: 0 0 80%;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
