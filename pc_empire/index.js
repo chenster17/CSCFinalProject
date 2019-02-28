@@ -5,6 +5,9 @@ const CPUroutes = require('./routes/CPUapi');
 const Moboroutes = require('./routes/Moboapi');
 const Caseroutes = require('./routes/Caseapi');
 const PSroutes = require('./routes/PSapi');
+const GPUroutes = require('./routes/GPUapi');
+const RAMroutes = require('./routes/RAMapi');
+const Storageroutes = require('./routes/Storageapi');
 const path = require('path');
 require('dotenv').config();
 
@@ -32,6 +35,9 @@ app.use('/CPUapi', CPUroutes);
 app.use('/Moboapi', Moboroutes);
 app.use('/Caseapi', Caseroutes);
 app.use('/PSapi', PSroutes);
+app.use('/GPUapi', GPUroutes);
+app.use('/RAMapi', RAMroutes);
+app.use('/Storageapi', Storageroutes);
 
 app.use((err, req, res, next) => {
   console.log(err);

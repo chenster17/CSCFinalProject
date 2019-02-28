@@ -7,7 +7,7 @@ const StorageSchema = new Schema({
     Name: String,
     Type: String,
     Capacity: String,
-    Speed: Number,
+    Speed: String,
     Interface: String,
     Protocol: String,
     Power: Number,

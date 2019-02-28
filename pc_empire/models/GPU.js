@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 
 //create schema for pc_empire
 const GPUSchema = new Schema({
-    ChipsetManufacturer: String,
+    Chipset_Manufacturer: String,
     Manufacturer: String,
     Name: String,
     Clock: Number,
-    Vram: Number,
+    VRAM: Number,
     Interface: String,
-    Power, Number,
+    Power: Number,
     Price: Number
 });
 
