@@ -22,7 +22,7 @@ const SliderHandleComponent = ({
         }}
         {...getHandleProps(id)}
     >
-        <div style={{ fontFamily: "Roboto", fontSize: 11, marginTop: -35 }}>
+        <div style={{ fontFamily: "Roboto", fontSize: 13, marginTop: -20 }}>
             {value}
         </div>
     </div>
