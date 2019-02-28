@@ -1,4 +1,5 @@
 import {FILTER_BRAND_ACTION_TYPES, FILTER_PRICE_ACTION_TYPES} from "../helpers/actionTypes";
+import { LOCATION_CHANGE } from "react-router-redux";
 
 const initialState = {
     brands: [],
@@ -23,6 +24,8 @@ export const handleSliderChange = (event) => {
 
 export const filterReducer = (state = initialState, action) => {
     switch (action.type) {
+        case LOCATION_CHANGE:
+            return initialState;
         case FILTER_BRAND_ACTION_TYPES.add:
             if (!state.brands.includes(action.payload)) {
                 return {

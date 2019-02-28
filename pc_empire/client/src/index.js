@@ -4,25 +4,24 @@ import './Styles/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
+import {  applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 import allReducers from "./reducers/index";
+import { Router } from "react-router";
+import { logger } from "redux-logger";
+import { createBrowserHistory } from "history";
+import { syncHistoryWithStore } from "react-router-redux";
 
-const logger = store => next => action => {
-    console.group(action.type);
-    console.log('current state', store.getState());
-    console.log('dispatching', action);
-    let result = next(action);
-    console.log('next state', store.getState());
-    console.groupEnd(action.type);
-    return result
-};
-
+const browserHistory = createBrowserHistory();
 const store = createStore(allReducers, applyMiddleware(thunk, logger));
-//const store = createStore(allReducers, applyMiddleware(thunk));
+
+const history = syncHistoryWithStore(browserHistory, store);
+
 const RootApp = () => (
     <Provider store={store}>
-        <App />
+        <Router history={history}>
+            <App />
+        </Router>
     </Provider>
 );
 

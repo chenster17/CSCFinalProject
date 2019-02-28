@@ -33,7 +33,7 @@ export default class ProductListComponent extends Component {
                                 {
                                     this.props.brands.map(brand => {
                                         return(
-                                            <Row>
+                                            <Row key={`checkbox-row-${brand}`}>
                                             <Form.Check
                                                 key={`checkbox-${brand}`}
                                                 name={brand}
@@ -73,8 +73,8 @@ export default class ProductListComponent extends Component {
                                         return(
                                             <tr key={`row-${p.Name}`}>
                                                 {
-                                                    this.props.searchHeaders.map(h => 
-                                                        <td>{p[h]}</td>)
+                                                    this.props.searchHeaders.map(h =>
+                                                        <td key={`product-header-${p[h]}`}>{p[h]}</td>)
                                                 }
                                             </tr>
                                         )
@@ -88,13 +88,7 @@ export default class ProductListComponent extends Component {
         );
     }
 }
-/* <td>{`${p.Manufacturer} ${p.Name}`}</td>
-                                    <td>{p.Clock.substring(0, 7)}</td>
-                                    <td>{p.Cores}</td>
-                                    <td>{`${p.Power}W`}</td>
-                                    <td />
-                                    <td>{`\$${p.Price}`}</td>
-                                    <td /> */
+
 ProductListComponent.propTypes = {
     brands: PropTypes.array.isRequired,
     handleCheck: PropTypes.func.isRequired,

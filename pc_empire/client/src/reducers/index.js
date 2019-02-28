@@ -4,8 +4,8 @@ import { cpuReducer } from "./cpuReducer";
 import { moboReducer } from './moboReducer';
 import { filterReducer } from "./filterReducer";
 import { pricesReducer }  from "./pricesReducer";
+import { routerReducer } from "react-router-redux";
 import { searchReducer } from "./searchReducer";
-
 
 const allReducers = combineReducers({
     brands: brandsReducer,
@@ -13,6 +13,7 @@ const allReducers = combineReducers({
     Motherboard: moboReducer,
     filter: filterReducer,
     prices: pricesReducer,
+    routing: routerReducer,
     search: searchReducer
 });
 
