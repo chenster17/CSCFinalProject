@@ -33,7 +33,7 @@ export default class ProductListComponent extends Component {
                                 {
                                     this.props.brands.map(brand => {
                                         return(
-                                            <Row>
+                                            <Row key={`checkbox-row-${brand}`}>
                                             <Form.Check
                                                 key={`checkbox-${brand}`}
                                                 name={brand}
@@ -74,7 +74,7 @@ export default class ProductListComponent extends Component {
                                             <tr key={`row-${p.Name}`}>
                                                 {
                                                     this.props.searchHeaders.map(h =>
-                                                        <td>{p[h]}</td>)
+                                                        <td key={`product-header-${p[h]}`}>{p[h]}</td>)
                                                 }
                                             </tr>
                                         )
