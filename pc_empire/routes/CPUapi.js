@@ -2,14 +2,14 @@ const express = require ('express');
 const router = express.Router();
 const CPU = require('../models/CPU');
 
-router.get("/getAllCPUs", (req, res, next) => {
+router.get("/getAll", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({})
         .then(data => res.json(data))
         .catch(next)
 });
 
-router.get("/getCPUBrands", (req, res, next) => {
+router.get("/getBrands", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Manufacturer")
         .then(data => {
@@ -24,7 +24,7 @@ router.get("/getCPUBrands", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getCPUName", (req, res, next) => {
+router.get("/getName", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Name")
         .then(data => {
@@ -39,7 +39,7 @@ router.get("/getCPUName", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getCPUSocket", (req, res, next) => {
+router.get("/getSocket", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Socket")
         .then(data => {
@@ -54,7 +54,7 @@ router.get("/getCPUSocket", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getCPUClock", (req, res, next) => {
+router.get("/getClock", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Clock")
         .then(data => {
@@ -68,7 +68,7 @@ router.get("/getCPUClock", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getCPUCores", (req, res, next) => {
+router.get("/getCores", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Cores")
         .then(data => {
@@ -82,7 +82,7 @@ router.get("/getCPUCores", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getCPUPower", (req, res, next) => {
+router.get("/getPower", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Power")
         .then(data => {
@@ -97,7 +97,7 @@ router.get("/getCPUPower", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getCPUPrices", (req, res, next) => {
+router.get("/getPrices", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Price")
         .then(data => {
