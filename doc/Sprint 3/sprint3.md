@@ -11,40 +11,40 @@ March 1, 2019
 * Philip Rachwalski: Rachwal2
 
 ### Sprint Goal
-* We want to be display motherboards and CPUs on our webpage. 
-On that webpage, we want to be able to filter by price and brand. 
+* We want to display all remaining parts on their own webpages, like CPUs and Motherboards. 
+Additionally, we want to let users create their own accounts, then create and save system builds.
 
 ### Sprint Backlog
-1.) As a user, I want to see CPUs displayed on the website.
-* Have CPUs stored in the database (Philip R.)
-* Get CPU information from database via api (Zhao, Jack)
-* Have a webpage to display CPUs (Albert)
 
-2.) As a user, I want to see Motherboards displayed on the website.
-* Have Motherboards stored in the database (Philip R.)
-* Get Motherboard information from database via api (Zhao)
-* Have a webpage to display Motherboards (Philip C.)
+1.) As a new user, I want to make an account so I can store my personal information and create builds that will be saved.
+* Develop API for creating accounts in database. (Zhao)
+* Create a page where users can make accounts. (Albert)
 
-### note: adding information to the database in stories 1 and 2 can't be tracked on github
+2.) As a logged out user, I want to be able to sign my account so I can make use of account privileges.
+* Create a sign in page.
+* Develop separate mode for "logged in" users.
+* Create method to switch between user and "logged in" modes.
+* CSS styling
 
-3.) As a knowledgable user, I want to search for specific CPUs by name to save time and find exactly what I want.
-* Create search bar widget (Albert)
-* Design search algortithm (Albert)
+3.) As a logged in user, I want to be able to sign out of my account when I am finished with it.
+* Create method to switch between "logged in" and user mode.
+* Create UI element to allow signing out.
+* CSS styling
+
+4.) As a browsing user, I want to be able to see all parts on the website.
+* Finish API calls for all remaining parts. (Zhao, Philip R.)
+* Adapt webpages and create new ones for all remaining parts. (Philip C.)
+
+5.) As a builder, I want to create plans for a complete system build so I can see an overview of my build on the website.
+* Create page that displays current build.
+* Create buttons add to add parts to current build from the parts pages.
+* Create buttons to remove parts from current build.
+
+6.) As a logged in user, I want to be able to save my system builds so that I can work on them later.
+* Design schema for system builds. (Zhao, Jack)
+* Develop API for creating/modifying system builds in database. (Zhao, Philip R.)
+* Create button to save builds.
 
 
-4.) As a knowledgable user, I want to search for specific Motherboards by name to save time and find exactly what I want.
-* Adapt search bar widget (Philip C.)
-* Adapt search algortithm (Philip C.)
 
-
-5.) As a potential buyer, I want to filter available CPUs shown to me so I can find components that fit my criteria.
-* Create filter sidebar (Albert)
-* Add options to filter by brand (Zhao, Albert)
-* Add options to filter by price (Zhao, Albert)
-
-
-6.) As a potential buyer, I want to filter available Motherboards shown to me so I can find components that fit my criteria.
-* Adapt filter sidebar (Philip C.)
-* Add options to filter by brand (Zhao, Philip C.)
-* Add options to filter by price (Zhao, Philip C.)
 
