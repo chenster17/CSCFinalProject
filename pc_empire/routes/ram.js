@@ -1,17 +1,17 @@
 const express = require ('express');
 const router = express.Router();
-const GPU = require('../models/GPU');
+const RAM = require('../models/ram');
 
 router.get("/getAll", (req, res, next) => {
     //this will return all the Mobos stored in the database
-    GPU.find({})
+    RAM.find({})
         .then(data => res.json(data))
         .catch(next)
 });
 
 router.get("/getBrands", (req, res, next) => {
     //this will return all Mobos from the database
-    GPU.find({},"Manufacturer")
+    RAM.find({},"Manufacturer")
         .then(data => {
             const result =[];
             for (var i in data) {
@@ -26,7 +26,7 @@ router.get("/getBrands", (req, res, next) => {
 
 router.get("/getNames", (req, res, next) => {
     //this will return all CPUs from the database
-    GPU.find({},"Name")
+    RAM.find({},"Name")
         .then(data => {
             const result =[];
             for (var i in data) {
@@ -41,7 +41,7 @@ router.get("/getNames", (req, res, next) => {
 
 router.get("/getPrices", (req, res, next) => {
     //this will return all CPUs from the database
-    GPU.find({},"Price")
+    RAM.find({},"Price")
         .then(data => {
             const result =[];
             for (var i in data) {
@@ -54,80 +54,63 @@ router.get("/getPrices", (req, res, next) => {
         })
         .catch(next)
 });
-
-router.get("/getPowers", (req, res, next) => {
+router.get("/getTypes", (req, res, next) => {
     //this will return all CPUs from the database
-    GPU.find({},"Power")
+    RAM.find({},"Type")
         .then(data => {
             const result =[];
             for (var i in data) {
                 var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.Power))
-                    result.push(obj.Power);
-            }
-
-            res.json(result.sort(function(a, b){return a-b}));
-        })
-        .catch(next)
-});
-router.get("/getChipBrands", (req, res, next) => {
-    //this will return all Mobos from the database
-    GPU.find({},"Chipset_Manufacturer")
-        .then(data => {
-            const result =[];
-            for (var i in data) {
-                var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.Chipset_Manufacturer))
-                    result.push(obj.Chipset_Manufacturer);
+                if(!result.includes(obj.Type))
+                    result.push(obj.Type);
             }
             res.json(result);
         })
         .catch(next)
 });
-
-router.get("/getClocks", (req, res, next) => {
+router.get("/getSpeeds", (req, res, next) => {
     //this will return all CPUs from the database
-    GPU.find({},"Clock")
+    RAM.find({},"Speed")
         .then(data => {
             const result =[];
             for (var i in data) {
                 var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.Clock))
-                    result.push(obj.Clock);
+                if(!result.includes(obj.Speed))
+                    result.push(obj.Speed);
             }
 
             res.json(result.sort(function(a, b){return a-b}));
         })
         .catch(next)
 });
-router.get("/getInterfaces", (req, res, next) => {
+router.get("/getCapacites", (req, res, next) => {
     //this will return all CPUs from the database
-    GPU.find({},"Interface")
+    RAM.find({},"Capacity")
         .then(data => {
             const result =[];
             for (var i in data) {
                 var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.Interface))
-                    result.push(obj.Interface);
-            }
-            res.json(result);
-        })
-        .catch(next)
-});
-router.get("/getVRAMs", (req, res, next) => {
-    //this will return all CPUs from the database
-    GPU.find({},"VRAM")
-        .then(data => {
-            const result =[];
-            for (var i in data) {
-                var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.VRAM))
-                    result.push(obj.VRAM);
+                if(!result.includes(obj.Capacity))
+                    result.push(obj.Capacity);
             }
 
             res.json(result.sort(function(a, b){return a-b}));
         })
         .catch(next)
 });
+router.get("/getSlots", (req, res, next) => {
+    //this will return all CPUs from the database
+    RAM.find({},"Slots")
+        .then(data => {
+            const result =[];
+            for (var i in data) {
+                var obj = JSON.parse(JSON.stringify(data[i]));
+                if(!result.includes(obj.Slots))
+                    result.push(obj.Slots);
+            }
 
+            res.json(result.sort(function(a, b){return a-b}));
+        })
+        .catch(next)
+});
 module.exports = router;

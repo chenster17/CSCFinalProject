@@ -1,13 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const CPUroutes = require('./routes/CPUapi');
-const Moboroutes = require('./routes/Moboapi');
-const Caseroutes = require('./routes/Caseapi');
-const PSroutes = require('./routes/PSapi');
-const GPUroutes = require('./routes/GPUapi');
-const RAMroutes = require('./routes/RAMapi');
-const Storageroutes = require('./routes/Storageapi');
+const CPUroutes = require('./routes/cpu');
+const Moboroutes = require('./routes/motherboard');
+const Caseroutes = require('./routes/case');
+const PSroutes = require('./routes/power_supply');
+const GPUroutes = require('./routes/gpu');
+const RAMroutes = require('./routes/ram');
+const Storageroutes = require('./routes/storage');
 const path = require('path');
 require('dotenv').config();
 
@@ -31,13 +31,13 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-app.use('/CPUapi', CPUroutes);
-app.use('/Moboapi', Moboroutes);
-app.use('/Caseapi', Caseroutes);
-app.use('/PSapi', PSroutes);
-app.use('/GPUapi', GPUroutes);
-app.use('/RAMapi', RAMroutes);
-app.use('/Storageapi', Storageroutes);
+app.use('/cpu', CPUroutes);
+app.use('/motherboard', Moboroutes);
+app.use('/case', Caseroutes);
+app.use('/power_supply', PSroutes);
+app.use('/gpu', GPUroutes);
+app.use('/ram', RAMroutes);
+app.use('/storage', Storageroutes);
 
 app.use((err, req, res, next) => {
   console.log(err);

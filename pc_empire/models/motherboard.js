@@ -19,7 +19,7 @@ const MoboSchema = new Schema({
 
 //create model for pc_empire
 
-const Mobo = mongoose.model('Motherboard', MoboSchema,'Motherboard');
+const Motherboard = mongoose.model('Motherboard', MoboSchema,'Motherboard');
 
 
-module.exports = Mobo;
+module.exports = Motherboard;

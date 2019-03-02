@@ -1,17 +1,17 @@
 const express = require ('express');
 const router = express.Router();
-const RAM = require('../models/RAM');
+const Case = require('../models/case');
 
 router.get("/getAll", (req, res, next) => {
     //this will return all the Mobos stored in the database
-    RAM.find({})
+    Case.find({})
         .then(data => res.json(data))
         .catch(next)
 });
 
 router.get("/getBrands", (req, res, next) => {
     //this will return all Mobos from the database
-    RAM.find({},"Manufacturer")
+    Case.find({},"Manufacturer")
         .then(data => {
             const result =[];
             for (var i in data) {
@@ -26,7 +26,7 @@ router.get("/getBrands", (req, res, next) => {
 
 router.get("/getNames", (req, res, next) => {
     //this will return all CPUs from the database
-    RAM.find({},"Name")
+    Case.find({},"Name")
         .then(data => {
             const result =[];
             for (var i in data) {
@@ -39,9 +39,38 @@ router.get("/getNames", (req, res, next) => {
         .catch(next)
 });
 
+router.get("/getColors", (req, res, next) => {
+    //this will return all CPUs from the database
+    Case.find({},"Color")
+        .then(data => {
+            const result =[];
+            for (var i in data) {
+                var obj = JSON.parse(JSON.stringify(data[i]));
+                if(!result.includes(obj.Color))
+                    result.push(obj.Color);
+            }
+            res.json(result);
+        })
+        .catch(next)
+});
+
+router.get("/getFormFactors", (req, res, next) => {
+    //this will return all CPUs from the database
+    Case.find({},"Form_Factor")
+        .then(data => {
+            const result =[];
+            for (var i in data) {
+                var obj = JSON.parse(JSON.stringify(data[i]));
+                if(!result.includes(obj.Form_Factor))
+                    result.push(obj.Form_Factor);
+            }
+            res.json(result);
+        })
+        .catch(next)
+});
 router.get("/getPrices", (req, res, next) => {
     //this will return all CPUs from the database
-    RAM.find({},"Price")
+    Case.find({},"Price")
         .then(data => {
             const result =[];
             for (var i in data) {
@@ -54,63 +83,5 @@ router.get("/getPrices", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getTypes", (req, res, next) => {
-    //this will return all CPUs from the database
-    RAM.find({},"Type")
-        .then(data => {
-            const result =[];
-            for (var i in data) {
-                var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.Type))
-                    result.push(obj.Type);
-            }
-            res.json(result);
-        })
-        .catch(next)
-});
-router.get("/getSpeeds", (req, res, next) => {
-    //this will return all CPUs from the database
-    RAM.find({},"Speed")
-        .then(data => {
-            const result =[];
-            for (var i in data) {
-                var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.Speed))
-                    result.push(obj.Speed);
-            }
 
-            res.json(result.sort(function(a, b){return a-b}));
-        })
-        .catch(next)
-});
-router.get("/getCapacites", (req, res, next) => {
-    //this will return all CPUs from the database
-    RAM.find({},"Capacity")
-        .then(data => {
-            const result =[];
-            for (var i in data) {
-                var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.Capacity))
-                    result.push(obj.Capacity);
-            }
-
-            res.json(result.sort(function(a, b){return a-b}));
-        })
-        .catch(next)
-});
-router.get("/getSlots", (req, res, next) => {
-    //this will return all CPUs from the database
-    RAM.find({},"Slots")
-        .then(data => {
-            const result =[];
-            for (var i in data) {
-                var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.Slots))
-                    result.push(obj.Slots);
-            }
-
-            res.json(result.sort(function(a, b){return a-b}));
-        })
-        .catch(next)
-});
 module.exports = router;

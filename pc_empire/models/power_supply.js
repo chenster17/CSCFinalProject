@@ -12,7 +12,7 @@ const PowerSupplySchema = new Schema({
 
 //create model for pc_empire
 
-const PowerSupply = mongoose.model('Power Supply', PowerSupplySchema,'Power Supply');
+const Power_supply = mongoose.model('Power Supply', PowerSupplySchema,'Power Supply');
 
-module.exports = PowerSupply;
+module.exports = Power_supply;
 

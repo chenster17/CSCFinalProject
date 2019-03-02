@@ -1,6 +1,6 @@
 const express = require ('express');
 const router = express.Router();
-const Mobo = require('../models/Mobo');
+const Mobo = require('../models/motherboard');
 
 
 

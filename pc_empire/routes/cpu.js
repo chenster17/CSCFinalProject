@@ -1,6 +1,6 @@
 const express = require ('express');
 const router = express.Router();
-const CPU = require('../models/CPU');
+const CPU = require('../models/cpu');
 
 router.get("/getAll", (req, res, next) => {
     //this will return all CPUs from the database

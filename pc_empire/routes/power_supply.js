@@ -1,6 +1,6 @@
 const express = require ('express');
 const router = express.Router();
-const PS = require('../models/PowerSupply');
+const PS = require('../models/power_supply');
 
 router.get("/getAll", (req, res, next) => {
     //this will return all the Mobos stored in the database
