@@ -1,8 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
-mongoose.set('useFindAndModify', false);
 const CPUroutes = require('./routes/cpu');
 const Moboroutes = require('./routes/motherboard');
 const Caseroutes = require('./routes/case');
@@ -10,8 +8,7 @@ const PSroutes = require('./routes/power_supply');
 const GPUroutes = require('./routes/gpu');
 const RAMroutes = require('./routes/ram');
 const Storageroutes = require('./routes/storage');
-const Buildroutes = require('./routes/build');
-
+const Accountroutes = require('./routes/account');
 const path = require('path');
 require('dotenv').config();
 
@@ -42,7 +39,7 @@ app.use('/power_supply', PSroutes);
 app.use('/gpu', GPUroutes);
 app.use('/ram', RAMroutes);
 app.use('/storage', Storageroutes);
-app.use('/build', Buildroutes);
+app.use('/account', Accountroutes);
 
 app.use((err, req, res, next) => {
   console.log(err);
