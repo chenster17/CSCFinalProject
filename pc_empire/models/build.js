@@ -18,6 +18,6 @@ const BuildSchema = new Schema({
 
 //create model for pc_empire
 
-const Build = mongoose.model('Build', BuildSchema,'Build');
+const Build = mongoose.model('Builds', BuildSchema,'Builds');
 
 module.exports = Build;
