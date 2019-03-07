@@ -24,6 +24,13 @@ router.get("/getBrands", (req, res, next) => {
         .catch(next)
 });
 
+router.get("/getDistinctBrands", (req, res, next) => {
+    //this will return all CPUs from the database
+    CPU.distinct("Manufacturer")
+        .then(data => res.json(data))
+        .catch(next)
+});
+
 router.get("/getNames", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Name")
@@ -110,6 +117,13 @@ router.get("/getPrices", (req, res, next) => {
 
             res.json(result.sort(function(a, b){return a-b}));
         })
+        .catch(next)
+});
+
+router.get("/getDistinctPrices", (req, res, next) => {
+    //this will return all CPUs from the database
+    CPU.distinct("Price")
+        .then(data => res.json(data.sort(function(a, b){return a-b})))
         .catch(next)
 });
 
