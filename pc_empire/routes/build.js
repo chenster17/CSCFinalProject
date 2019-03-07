@@ -8,11 +8,18 @@ router.get("/getAll", (req, res, next) => {
         .then(data => res.json(data))
         .catch(next)
 });
+
 router.get("/getBuild/:id",(req, res, next) =>{
     Build.findById(req.params.id)
         .then(data => res.json(data))
         .catch(next)
 });
+
+router.get("/getOwner/:id", (req, res, next) => {
+    Build.findById(req.params.id,{"Owner_id":1, "_id":0})
+        .then(data => res.json(data))
+        .catch(next)
+})
 
 router.post("/makeBuild", (req,res,next) => {
     if (req.body.Build_Name) {
@@ -27,9 +34,15 @@ router.post("/makeBuild", (req,res,next) => {
 });
 
 router.post("/updateBuild/:id", (req,res,next) =>{
-    Build.findByIdAndUpdate(req.params.id,json(req.body),{new:true})
+    Build.findByIdAndUpdate(req.params.id,req.body,{new:true})
         .then(data => res.json(data))
         .catch(next)
 });
+
+router.delete("/deleteBuild/:id", (req, res, next) =>{
+    Build.findByIdAndDelete(req.params.id)
+        .then(res.send())
+        .catch(next)
+})
 
 module.exports = router;

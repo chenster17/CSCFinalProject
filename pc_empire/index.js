@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 const CPUroutes = require('./routes/cpu');
 const Moboroutes = require('./routes/motherboard');
 const Caseroutes = require('./routes/case');
