@@ -14,10 +14,16 @@ router.get("getBuild",(req, res, next) =>{
         .catch(next)
 });
 
-router.post("/makeBuild", (req,res,next) =>{
-    Build.create(req.body)
-        .then(data => res.json(data))
-        .catch(next)
+router.post("/makeBuild", (req,res,next) => {
+    if (req.body.Build_Name) {
+        Build.create(req.body)
+            .then(data => res.json(data))
+            .catch(next)
+    }else{
+        res.json({
+            error: "an input field is empty"
+        })
+    }
 });
 
 router.post("/updateBuild", (req,res,next) =>{
