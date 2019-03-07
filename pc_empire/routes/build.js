@@ -8,8 +8,8 @@ router.get("/getAll", (req, res, next) => {
         .then(data => res.json(data))
         .catch(next)
 });
-router.get("getBuild",(req, res, next) =>{
-    Build.find({"_id":req.params.id})
+router.get("/getBuild/:id",(req, res, next) =>{
+    Build.findById(req.params.id)
         .then(data => res.json(data))
         .catch(next)
 });
@@ -26,8 +26,10 @@ router.post("/makeBuild", (req,res,next) => {
     }
 });
 
-router.post("/updateBuild", (req,res,next) =>{
-    Build.findByIdAndUpdate({"_id":req.params.id},req.body,options,callback)
+router.post("/updateBuild/:id", (req,res,next) =>{
+    Build.findByIdAndUpdate(req.params.id,json(req.body),{new:true})
         .then(data => res.json(data))
         .catch(next)
 });
+
+module.exports = router;

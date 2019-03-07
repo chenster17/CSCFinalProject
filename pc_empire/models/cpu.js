@@ -15,7 +15,7 @@ const CPUSchema = new Schema({
 
 //create model for pc_empire
 
-const Cpu = mongoose.model('Cpu', CPUSchema,'Cpu');
+const Cpu = mongoose.model('CPU', CPUSchema,'CPU');
 
 
 module.exports = Cpu;
