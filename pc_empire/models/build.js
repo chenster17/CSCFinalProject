@@ -11,7 +11,7 @@ const BuildSchema = new Schema({
     Motherboard_id: String,
     Power_Supply_id: String,
     RAM_id: String,
-    Storage_id: String,
+    Storage_id: Array,
     Reviews: Array,
     Comments: Array
 });
