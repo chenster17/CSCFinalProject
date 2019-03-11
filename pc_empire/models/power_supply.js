@@ -6,7 +6,7 @@ const PowerSupplySchema = new Schema({
     Manufacturer: String,
     Name: String,
     Power: Number,
-    Efficiency_Rating: Boolean,
+    Efficiency_Rating: String,
     Price: Number
 });
 

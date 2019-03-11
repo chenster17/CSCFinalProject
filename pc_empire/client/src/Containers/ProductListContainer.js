@@ -5,7 +5,7 @@ import { HEADERS, SEARCH_HEADERS } from "../helpers/tableHeaders";
 import PropTypes from "prop-types";
 
 import { connect } from 'react-redux';
-import { fetchAllCpus, fetchBrands, fetchPrices, fetchAllMobos } from "../helpers/apiRequests";
+import { fetchAllCpus, fetchBrands, fetchPrices, fetchAllMobos, fetchAllGPUs, fetchAllRAMs, fetchAllPSs, fetchAllStorages, fetchAllCases } from "../helpers/apiRequests";
 import { handleSearch } from "../reducers/searchReducer";
 import { handleCheck, handleSliderChange } from "../reducers/filterReducer";
 
@@ -14,6 +14,11 @@ class ProductListContainer extends Component {
         brands: PropTypes.array.isRequired,
         fetchAllCpus: PropTypes.func.isRequired,
         fetchAllMobos: PropTypes.func.isRequired,
+        fetchAllGPUs: PropTypes.func.isRequired,
+        fetchAllRAMs: PropTypes.func.isRequired,
+        fetchAllPSs: PropTypes.func.isRequired,
+        fetchAllStorages: PropTypes.func.isRequired,
+        fetchAllCases: PropTypes.func.isRequired,
         fetchBrands: PropTypes.func.isRequired,
         fetchPrices: PropTypes.func.isRequired,
         handleCheck: PropTypes.func.isRequired,
@@ -27,6 +32,11 @@ class ProductListContainer extends Component {
     componentDidMount() {
         this.props.fetchAllMobos();
         this.props.fetchAllCpus();
+        this.props.fetchAllGPUs();
+        this.props.fetchAllRAMs();
+        this.props.fetchAllPSs();
+        this.props.fetchAllStorages();
+        this.props.fetchAllCases();
         this.props.fetchBrands(this.props.productType);
         this.props.fetchPrices(this.props.productType);
     }
@@ -86,6 +96,21 @@ const mapDispatchToProps = (dispatch) => {
         },
         fetchAllMobos: () => {
             dispatch(fetchAllMobos());
+        },
+        fetchAllGPUs: () => {
+            dispatch(fetchAllGPUs());
+        },
+        fetchAllRAMs: () => {
+            dispatch(fetchAllRAMs());
+        },
+        fetchAllPSs: () => {
+            dispatch(fetchAllPSs());
+        },
+        fetchAllStorages: () => {
+            dispatch(fetchAllStorages());
+        },
+        fetchAllCases: () => {
+            dispatch(fetchAllCases());
         },
         fetchBrands: (productType) => {
             dispatch(fetchBrands(productType));
