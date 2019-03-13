@@ -28,7 +28,8 @@ class ProductListContainer extends Component {
         handleAdd: PropTypes.func.isRequired,
         prices: PropTypes.array.isRequired,
         products: PropTypes.array.isRequired,
-        productType: PropTypes.string.isRequired
+        productType: PropTypes.string.isRequired,
+        currentPath: PropTypes.string.isRequired
     };
 
     componentDidMount() {
@@ -44,11 +45,13 @@ class ProductListContainer extends Component {
     }
 
     render() {
+        console.log(this);
         const tableHeaders = HEADERS[this.props.productType];
         const search_Headers = SEARCH_HEADERS[this.props.productType];
         return tableHeaders ? (
             <div>
                 <ProductListComponent
+                    key="ProductListComponent"
                     brands={this.props.brands}
                     headers={tableHeaders}
                     searchHeaders={search_Headers}
@@ -59,6 +62,8 @@ class ProductListContainer extends Component {
                     prices={this.props.prices}
                     products={this.props.products}
                     productType={this.props.productType}
+                    currentPath={this.props.currentPath}
+                    history={this.props.history}
                 />
             </div>
         ) : <div>Invalid Product Type</div>;
@@ -84,7 +89,7 @@ const mapStateToProps = (state, ownProps) => {
         filteredProducts = filteredProducts.filter(p => p.Price >= low && p.Price <= high);
     }
     return {
-
+        currentPath: ownProps.history.location.pathname,
         brands: state.brands,
         prices: state.prices,
         products: filteredProducts,

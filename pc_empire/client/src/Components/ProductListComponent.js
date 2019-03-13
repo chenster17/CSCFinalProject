@@ -72,10 +72,20 @@ export default class ProductListComponent extends Component {
                                 {
                                     this.props.products.map(p => {
                                         return(
+                                        
                                             <tr key={`row-${p.Name}`}>
                                                 {
-                                                    this.props.searchHeaders.map(h =>
-                                                        <td key={`product-header-${p[h]}`}>{p[h]}</td>)
+                                                    this.props.searchHeaders.map(h => {
+                                                        var url = window.location.href;
+                                                        url = url.replace(this.props.currentPath,'');
+                                                        url = url.concat(`/part/${p._id}`);
+                                                        url = `/part/${p._id}`;
+                                                        return (
+                                                        
+                                                            <a onClick={() => `${this.props.history.push(url)}`}><td key={`product-header-${p[h]}`}>{p[h]}</td></a>
+                                                        )
+                                                    })
+                                                        
                                                 }
                                                 <td>
                                                     <BuildAddButtonComponent 
@@ -85,6 +95,7 @@ export default class ProductListComponent extends Component {
                                                     />
                                                 </td>
                                             </tr>
+                                        
                                         )
                                     })
                                 }
