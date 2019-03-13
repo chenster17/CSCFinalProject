@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { fetchAllCpus, fetchBrands, fetchPrices, fetchAllMobos, fetchAllGPUs, fetchAllRAMs, fetchAllPSs, fetchAllStorages, fetchAllCases } from "../helpers/apiRequests";
 import { handleSearch } from "../reducers/searchReducer";
 import { handleCheck, handleSliderChange } from "../reducers/filterReducer";
+import { handleAdd } from "../reducers/buildReducer";
 
 class ProductListContainer extends Component {
     static propTypes = {
@@ -24,6 +25,7 @@ class ProductListContainer extends Component {
         handleCheck: PropTypes.func.isRequired,
         handleSearch: PropTypes.func.isRequired,
         handleSliderChange: PropTypes.func.isRequired,
+        handleAdd: PropTypes.func.isRequired,
         prices: PropTypes.array.isRequired,
         products: PropTypes.array.isRequired,
         productType: PropTypes.string.isRequired
@@ -53,6 +55,7 @@ class ProductListContainer extends Component {
                     handleCheck={this.props.handleCheck}
                     handleSearch={this.props.handleSearch}
                     handleSliderChange={this.props.handleSliderChange}
+                    handleAdd={this.props.handleAdd}
                     prices={this.props.prices}
                     products={this.props.products}
                     productType={this.props.productType}
@@ -126,6 +129,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         handleSliderChange: (event) => {
             dispatch(handleSliderChange(event));
+        },
+        handleAdd: (event) => {
+            dispatch(handleAdd(event));
         }
     }
 };

@@ -11,6 +11,7 @@ import { psReducer } from "./psReducer";
 import { ramReducer } from "./ramReducer";
 import { storageReducer } from "./storageReducer";
 import { caseReducer } from "./caseReducer";
+import { buildReducer } from "./buildReducer";
 
 const allReducers = combineReducers({
     brands: brandsReducer,
@@ -24,7 +25,8 @@ const allReducers = combineReducers({
     filter: filterReducer,
     prices: pricesReducer,
     routing: routerReducer,
-    search: searchReducer
+    search: searchReducer,
+    build: buildReducer
 });
 
 export default allReducers;

@@ -1,57 +1,105 @@
 import {BUILD_ITEM_ACTION_TYPES} from "../helpers/actionTypes";
 
 const initialState = {
-    CPU: 0,
-    Motherboard: 0,
+    CPU: "",
+    Motherboard: "",
     GPU: [],
-    PS: 0,
+    PS: "",
     RAM: [],
     Storage: [],
-    Case: 0
+    Case: ""
 };
 
 export const handleAdd = (event) => {
-    const ptype = event.currentTarget.producttype;
-    const id = event.currentTarget.value;
-    switch(ptype){
+    const ptype = event.currentTarget.value.split(",")[1];
+    const id = event.currentTarget.value.split(",")[0];
+    
+    switch (ptype) {
         case "CPU":
-            dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.cpu, payload: id });
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.cpu, payload: id })};
         case "Motherboard":
-            dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.mobo, payload: id });
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.mobo, payload: id })};
         case "GPU":
-            dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.gpu, payload: id });
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.gpu, payload: id })};
         case "Power Supply":
-            dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.ps, payload: id });
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.ps, payload: id })};
         case "RAM":
-            dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.ram, payload: id });
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.ram, payload: id })};
         case "Storage":
-            dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.storage, payload: id });
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.storage, payload: id })};
         case "Case":
-            dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.'case', payload: id });
-    }
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES['case'], payload: id })};
+    }   
+};
+
+export const handleRemove = (event) => {
+    const ptype = event.currentTarget.value.split(",")[1];
+    const id = event.currentTarget.value.split(",")[0];
+    
+    switch (ptype) {
+        case "CPU":
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.removecpu, payload: id })};
+        case "Motherboard":
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.removemobo, payload: id })};
+        case "GPU":
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.removegpu, payload: id })};
+        case "Power Supply":
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.removeps, payload: id })};
+        case "RAM":
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.removeram, payload: id })};
+        case "Storage":
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.removestorage, payload: id })};
+        case "Case":
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES['removecase'], payload: id })};
+    }   
 };
 
 
 export const buildReducer = (state = initialState, action) => {
     switch (action.type) {
         case BUILD_ITEM_ACTION_TYPES.cpu:
-            if (!state.brands.includes(action.payload)) {
-                return {
-                    ...state,
-                    brands: [...state.brands, action.payload]
-                };
+            return {...state, CPU: action.payload};
+        case BUILD_ITEM_ACTION_TYPES.mobo:
+            return {...state, Motherboard: action.payload};
+        case BUILD_ITEM_ACTION_TYPES.gpu:
+            return {...state, GPU: [...state.GPU, action.payload]};
+        case BUILD_ITEM_ACTION_TYPES.ps:
+            return {...state, PS: action.payload};
+        case BUILD_ITEM_ACTION_TYPES.ram:
+            return {...state, RAM: [...state.RAM, action.payload]};
+        case BUILD_ITEM_ACTION_TYPES.storage:
+            return {...state, Storage: [...state.Storage, action.payload]};
+        case BUILD_ITEM_ACTION_TYPES['case']:
+            return {...state, Case: action.payload};
+        case BUILD_ITEM_ACTION_TYPES.removecpu:
+            return {...state, CPU: ""}
+        case BUILD_ITEM_ACTION_TYPES.removemobo:
+            return {...state, Motherboard: ""}
+        case BUILD_ITEM_ACTION_TYPES.removegpu:
+            if (state.GPU.includes(action.payload)) {
+                var newState = [...state.GPU];
+                newState.splice(newState.indexOf(action.payload), 1);
+                return {...state, GPU: newState};
             }
             return state;
-        case FILTER_BRAND_ACTION_TYPES.remove:
-            if (state.brands.includes(action.payload)) {
-                return {
-                    ...state,
-                    brands: state.brands.filter(brand => brand !== action.payload)
-                }
+        case BUILD_ITEM_ACTION_TYPES.removeps:
+            return {...state, PS: ""}
+        case BUILD_ITEM_ACTION_TYPES.removeram:
+            if (state.RAM.includes(action.payload)) {
+                var newState = [...state.RAM];
+                newState.splice(newState.indexOf(action.payload), 1);
+                return {...state, RAM: newState};
             }
             return state;
-        case FILTER_PRICE_ACTION_TYPES.change:
-            return { ...state, priceRange: action.payload };
+        case BUILD_ITEM_ACTION_TYPES.removestorage:
+            if (state.Storage.includes(action.payload)) {
+                var newState = [...state.Storage];
+                newState.splice(newState.indexOf(action.payload), 1);
+                return {...state, Storage: newState};
+            }
+            return state;
+        case BUILD_ITEM_ACTION_TYPES['removecase']:
+            return {...state, Case: ""}
         default:
             return state
     }
