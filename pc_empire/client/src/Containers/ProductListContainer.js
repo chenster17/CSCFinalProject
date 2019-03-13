@@ -141,5 +141,8 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductListContainer);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ProductListContainer);
 

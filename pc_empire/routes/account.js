@@ -13,7 +13,7 @@ router.get("/getById/:id", (req, res, next) => {
         .catch(next)
 });
 router.get("/getUsername/:id", (req, res, next) => {
-    Acc.findById(req.params.id, {'User_Name':1, '_id':0})
+    Acc.findById(req.params.id, {'Username':1, '_id':0})
         .then(data=> res.json(data))
         .catch(next)
 });

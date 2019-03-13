@@ -11,9 +11,10 @@ import { Router } from "react-router";
 import { logger } from "redux-logger";
 import { createBrowserHistory } from "history";
 import { syncHistoryWithStore } from "react-router-redux";
+import localStorage from "./middlewares/localStorage";
 
 const browserHistory = createBrowserHistory();
-const store = createStore(allReducers, applyMiddleware(thunk, logger));
+const store = createStore(allReducers, applyMiddleware(thunk, logger, localStorage));
 
 const history = syncHistoryWithStore(browserHistory, store);
 

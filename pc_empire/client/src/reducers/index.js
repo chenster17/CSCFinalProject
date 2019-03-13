@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import { brandsReducer } from "./brandsReducer";
+import {captchaReducer} from "./captchaReducer";
 import { cpuReducer } from "./cpuReducer";
 import { moboReducer } from './moboReducer';
 import { filterReducer } from "./filterReducer";
@@ -12,9 +13,12 @@ import { ramReducer } from "./ramReducer";
 import { storageReducer } from "./storageReducer";
 import { caseReducer } from "./caseReducer";
 import { buildReducer } from "./buildReducer";
+import { credentialsFormReducer } from "./credentialsFormReducer";
+import {userInfoReducer} from "./userInfoReducer";
 
 const allReducers = combineReducers({
     brands: brandsReducer,
+    captcha:  captchaReducer,
     CPU: cpuReducer,
     Motherboard: moboReducer,
     GPU: gpuReducer,
@@ -23,10 +27,12 @@ const allReducers = combineReducers({
     Storage: storageReducer,
     Case: caseReducer,
     filter: filterReducer,
+    credentialsForm: credentialsFormReducer,
     prices: pricesReducer,
     routing: routerReducer,
     search: searchReducer,
-    build: buildReducer
+    build: buildReducer,
+    userInfo: userInfoReducer
 });
 
 export default allReducers;
