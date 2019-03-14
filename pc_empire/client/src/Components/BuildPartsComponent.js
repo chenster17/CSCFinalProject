@@ -33,7 +33,7 @@ export default class BuildPartsComponent extends Component {
                                 <tr key={`row-${p}`}>
                                     <td>{p}</td>
                                     <td>
-                                        {(this.props[pTypes[p]] === "" || this.props[pTypes[p]].length === 0)
+                                        {(this.props[pTypes[p]].length === 0 || this.props[pTypes[p]].id === "")
                                         ? <ProductButtonComponent productType={p}/> 
                                         : p === "GPU" || p === "RAM" || p === "Storage" ? 
                                         <Table striped>
@@ -41,27 +41,29 @@ export default class BuildPartsComponent extends Component {
                                                 {this.props[pTypes[p]].map(item => {
                                                     return (
                                                         <tr>
-                                                            <td>{item}</td>
+                                                            <td>{item.name}</td>
                                                             <td>
                                                                 <BuildRemoveButtonComponent 
-                                                                    _id={item}
+                                                                    Name={item.name}
+                                                                    _id={item.id}
                                                                     ptype={p}
                                                                     handleRemove={this.props.handleRemove}
                                                                 />
                                                             </td>
                                                         </tr>
                                                 )})}
-                                                <tr><ProductButtonComponent productType={p}/></tr>
+                                                <tr><td><ProductButtonComponent productType={p}/></td></tr>
                                             </tbody>
                                         </Table>
                                         : 
                                         <Table striped>
                                             <tbody>
                                                 <tr>
-                                                    <td>{this.props[pTypes[p]]}</td>
+                                                    <td>{this.props[pTypes[p]].name}</td>
                                                     <td>
                                                         <BuildRemoveButtonComponent 
-                                                            _id={this.props[pTypes[p]]}
+                                                            Name={this.props[pTypes[p]].name}
+                                                            _id={this.props[pTypes[p]].id}
                                                             ptype={p}
                                                             handleRemove={this.props.handleRemove}
                                                         />
@@ -82,12 +84,12 @@ export default class BuildPartsComponent extends Component {
 BuildPartsComponent.propTypes = {
     headers: PropTypes.array.isRequired,
     productTypes: PropTypes.array.isRequired,
-    CPU: PropTypes.string.isRequired,
-    Motherboard: PropTypes.string.isRequired,
-    GPU: PropTypes.array.isRequired,
-    PS: PropTypes.string.isRequired,
-    RAM: PropTypes.array.isRequired,
-    Storage: PropTypes.array.isRequired,
-    Case: PropTypes.string.isRequired,
+    CPU: PropTypes.object.isRequired,
+    Motherboard: PropTypes.object.isRequired,
+    GPU: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    PS: PropTypes.object.isRequired,
+    RAM: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    Storage: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    Case: PropTypes.object.isRequired,
     handleRemove: PropTypes.func.isRequired
 }

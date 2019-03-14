@@ -8,7 +8,7 @@ export default class BuildRemoveButtonComponent extends Component {
             <Button
                 variant="primary"
                 
-                value={[ this.props._id , this.props.ptype ]}
+                value={[ this.props._id , this.props.Name , this.props.ptype ]}
                 onClick={ this.props.handleRemove }
             >
                 Remove

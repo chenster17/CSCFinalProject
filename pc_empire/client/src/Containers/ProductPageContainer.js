@@ -19,7 +19,7 @@ class ProductPageContainer extends Component {
         fetchAllStorages: PropTypes.func.isRequired,
         fetchAllCases: PropTypes.func.isRequired,
         handleAdd: PropTypes.func.isRequired,
-        product: PropTypes.array.isRequired,
+        product: PropTypes.object.isRequired,
         productType: PropTypes.string.isRequired
     };
     componentDidMount() {
@@ -55,14 +55,19 @@ class ProductPageContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     console.log("Part state to props fired");
+    console.log(state);
     const id = ownProps.match.params._id;
     var prod = null;
     var pType = null;
     PRODUCT_TYPES.map(p => 
     {
-        if (state[p]._id === id)
-            prod = state[p];
-            pType = p;
+        state[p].map(pd => 
+        {
+            if (pd._id === id){
+                prod = pd;
+                pType = p;
+            }
+        });
     });
     return {
         _id: ownProps.match.params._id,

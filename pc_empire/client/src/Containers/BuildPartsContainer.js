@@ -10,13 +10,13 @@ import { handleRemove } from "../reducers/buildReducer";
 
 class BuildPartsContainer extends Component {
     static propTypes = {
-        CPU: PropTypes.string.isRequired,
-        Motherboard: PropTypes.string.isRequired,
-        GPU: PropTypes.array.isRequired,
-        PS: PropTypes.string.isRequired,
-        RAM: PropTypes.array.isRequired,
-        Storage: PropTypes.array.isRequired,
-        'Case': PropTypes.string.isRequired,
+        CPU: PropTypes.object.isRequired,
+        Motherboard: PropTypes.object.isRequired,
+        GPU: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+        PS: PropTypes.object.isRequired,
+        RAM: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+        Storage: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+        Case: PropTypes.object.isRequired,
         handleRemove: PropTypes.func.isRequired
     };
     
@@ -47,7 +47,7 @@ const mapStateToProps = (state, ownProps) => {
         PS: state.build.PS,
         RAM: state.build.RAM,
         Storage: state.build.Storage,
-        'Case': state.build['Case']
+        Case: state.build.Case
     }
 };
 const mapDispatchToProps = (dispatch) => {

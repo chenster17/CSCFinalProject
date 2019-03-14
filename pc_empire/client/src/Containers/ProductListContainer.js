@@ -45,7 +45,6 @@ class ProductListContainer extends Component {
     }
 
     render() {
-        console.log(this);
         const tableHeaders = HEADERS[this.props.productType];
         const search_Headers = SEARCH_HEADERS[this.props.productType];
         return tableHeaders ? (

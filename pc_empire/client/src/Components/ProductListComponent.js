@@ -81,14 +81,14 @@ export default class ProductListComponent extends Component {
                                                         url = url.concat(`/part/${p._id}`);
                                                         url = `/part/${p._id}`;
                                                         return (
-                                                        
-                                                            <a onClick={() => `${this.props.history.push(url)}`}><td key={`product-header-${p[h]}`}>{p[h]}</td></a>
+                                                            <td key={`product-header-${p[h]}`}><a onClick={() => `${this.props.history.push(url)}`}>{p[h]}</a></td>
                                                         )
                                                     })
                                                         
                                                 }
                                                 <td>
                                                     <BuildAddButtonComponent 
+                                                        Name={p.Name}
                                                         ptype={this.props.productType}
                                                         _id={p._id}
                                                         handleAdd={this.props.handleAdd}
