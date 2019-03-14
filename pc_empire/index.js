@@ -1,7 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const routes = require('./routes/api');
+const CPUroutes = require('./routes/cpu');
+const Moboroutes = require('./routes/motherboard');
+const Caseroutes = require('./routes/case');
+const PSroutes = require('./routes/power_supply');
+const GPUroutes = require('./routes/gpu');
+const RAMroutes = require('./routes/ram');
+const Storageroutes = require('./routes/storage');
+const Accountroutes = require('./routes/account');
+const Buildroutes = require('./routes/build');
 const path = require('path');
 require('dotenv').config();
 
@@ -25,7 +33,15 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-app.use('/api', routes);
+app.use('/cpu', CPUroutes);
+app.use('/motherboard', Moboroutes);
+app.use('/case', Caseroutes);
+app.use('/power_supply', PSroutes);
+app.use('/gpu', GPUroutes);
+app.use('/ram', RAMroutes);
+app.use('/storage', Storageroutes);
+app.use('/account', Accountroutes);
+app.use('/build', Buildroutes);
 
 app.use((err, req, res, next) => {
   console.log(err);

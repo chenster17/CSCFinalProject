@@ -1,16 +1,15 @@
 const express = require ('express');
 const router = express.Router();
-const CPU = require('../models/CPU');
-const Mobo = require('../models/Mobo');
+const CPU = require('../models/cpu');
 
-router.get("/getAllCPUs", (req, res, next) => {
+router.get("/getAll", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({})
         .then(data => res.json(data))
         .catch(next)
 });
 
-router.get("/getCPUBrands", (req, res, next) => {
+router.get("/getBrands", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Manufacturer")
         .then(data => {
@@ -25,7 +24,14 @@ router.get("/getCPUBrands", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getCPUName", (req, res, next) => {
+router.get("/getDistinctBrands", (req, res, next) => {
+    //this will return all CPUs from the database
+    CPU.distinct("Manufacturer")
+        .then(data => res.json(data))
+        .catch(next)
+});
+
+router.get("/getNames", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Name")
         .then(data => {
@@ -40,7 +46,7 @@ router.get("/getCPUName", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getCPUSocket", (req, res, next) => {
+router.get("/getSockets", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Socket")
         .then(data => {
@@ -55,7 +61,7 @@ router.get("/getCPUSocket", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getCPUClock", (req, res, next) => {
+router.get("/getClocks", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Clock")
         .then(data => {
@@ -69,7 +75,7 @@ router.get("/getCPUClock", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getCPUCores", (req, res, next) => {
+router.get("/getCores", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Cores")
         .then(data => {
@@ -83,7 +89,7 @@ router.get("/getCPUCores", (req, res, next) => {
         })
         .catch(next)
 });
-router.get("/getCPUPower", (req, res, next) => {
+router.get("/getPowers", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Power")
         .then(data => {
@@ -98,7 +104,7 @@ router.get("/getCPUPower", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getCPUPrices", (req, res, next) => {
+router.get("/getPrices", (req, res, next) => {
     //this will return all CPUs from the database
     CPU.find({},"Price")
         .then(data => {
@@ -114,40 +120,16 @@ router.get("/getCPUPrices", (req, res, next) => {
         .catch(next)
 });
 
-router.get("/getAllMobos", (req, res, next) => {
-    //this will return all the Mobos stored in the database
-    Mobo.find({})
+router.get("/getDistinctPrices", (req, res, next) => {
+    //this will return all CPUs from the database
+    CPU.distinct("Price")
+        .then(data => res.json(data.sort(function(a, b){return a-b})))
+        .catch(next)
+});
+
+router.get("/getCPU/:id",(req, res, next) =>{
+    CPU.findById(req.params.id)
         .then(data => res.json(data))
-        .catch(next)
-});
-
-router.get("/getMotherboardBrands", (req, res, next) => {
-    //this will return all CPUs from the database
-    Mobo.find({},"Manufacturer")
-        .then(data => {
-            const result =[];
-            for (var i in data) {
-                var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.Manufacturer))
-                    result.push(obj.Manufacturer);
-            }
-            res.json(result);
-        })
-        .catch(next)
-});
-
-router.get("/getMotherboardPrices", (req, res, next) => {
-    //this will return all CPUs from the database
-    Mobo.find({},"Price")
-        .then(data => {
-            const result =[];
-            for (var i in data) {
-                var obj = JSON.parse(JSON.stringify(data[i]));
-                if(!result.includes(obj.Price))
-                    result.push(obj.Price);
-            }
-            res.json(result.sort(function(a, b){return a-b}));
-        })
         .catch(next)
 });
 

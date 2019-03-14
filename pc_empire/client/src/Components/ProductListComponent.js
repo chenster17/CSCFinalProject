@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 
-import SliderComponent from '../Components/SliderComponent';
+import SliderComponent from './SliderComponent';
+import BuildAddButtonComponent from './BuildAddButtonComponent';
 
 export default class ProductListComponent extends Component {
     render() {
@@ -71,12 +72,30 @@ export default class ProductListComponent extends Component {
                                 {
                                     this.props.products.map(p => {
                                         return(
+
                                             <tr key={`row-${p.Name}`}>
                                                 {
-                                                    this.props.searchHeaders.map(h =>
-                                                        <td key={`product-header-${p[h]}`}>{p[h]}</td>)
+                                                    this.props.searchHeaders.map(h => {
+                                                        var url = window.location.href;
+                                                        url = url.replace(this.props.currentPath,'');
+                                                        url = url.concat(`/part/${p._id}`);
+                                                        url = `/part/${p._id}`;
+                                                        return (
+                                                            <td key={`product-header-${p[h]}`}><a onClick={() => `${this.props.history.push(url)}`}>{p[h]}</a></td>
+                                                        )
+                                                    })
+
                                                 }
+                                                <td>
+                                                    <BuildAddButtonComponent
+                                                        Name={p.Name}
+                                                        ptype={this.props.productType}
+                                                        _id={p._id}
+                                                        handleAdd={this.props.handleAdd}
+                                                    />
+                                                </td>
                                             </tr>
+
                                         )
                                     })
                                 }
@@ -94,6 +113,7 @@ ProductListComponent.propTypes = {
     handleCheck: PropTypes.func.isRequired,
     handleSearch: PropTypes.func.isRequired,
     handleSliderChange: PropTypes.func.isRequired,
+    handleAdd: PropTypes.func.isRequired,
     headers: PropTypes.array.isRequired,
     searchHeaders: PropTypes.array.isRequired,
     prices: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
