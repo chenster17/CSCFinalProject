@@ -59,4 +59,16 @@ router.delete("/deleteAccount/:id", (req, res, next) => {
         .catch(next)
 });
 
+router.post("/addBuild", (req, res, next) => {
+    if(req.body.id && req.body.buildId){
+        Acc.findByIdAndUpdate(req.body.id, {$push: {Builds: req.body.buildId} }, {new: true})
+            .then(data=> res.json(data))
+            .catch(next)
+    }else {
+        res.json({
+            error: "an input field is empty"
+        })
+    }
+});
+
 module.exports = router;

@@ -15,6 +15,7 @@ import { caseReducer } from "./caseReducer";
 import { buildReducer } from "./buildReducer";
 import { credentialsFormReducer } from "./credentialsFormReducer";
 import {userInfoReducer} from "./userInfoReducer";
+import {viewBuildsReducer} from "./viewBuildsReducer";
 
 const allReducers = combineReducers({
     brands: brandsReducer,
@@ -32,7 +33,8 @@ const allReducers = combineReducers({
     routing: routerReducer,
     search: searchReducer,
     build: buildReducer,
-    userInfo: userInfoReducer
+    userInfo: userInfoReducer,
+    viewBuilds: viewBuildsReducer
 });
 
 export default allReducers;

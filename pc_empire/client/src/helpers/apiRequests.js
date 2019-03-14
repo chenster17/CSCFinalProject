@@ -1,7 +1,6 @@
 import axios from "axios";
 
 import {
-    CAPTCHA_ACTION_TYPES,
     FETCH_BRANDS_ACTION_TYPES,
     FETCH_CPU_ACTION_TYPES,
     FETCH_MOBO_ACTION_TYPES,
@@ -12,7 +11,8 @@ import {
     FETCH_STORAGE_ACTION_TYPES,
     FETCH_CASE_ACTION_TYPES,
     REGISTRATION_ACTION_TYPES,
-    SIGN_IN_ACTION_TYPES
+    SIGN_IN_ACTION_TYPES,
+    SAVE_BUILD_ACTION_TYPES, UPDATE_VIEW_BUILDS_ACTION_TYPES
 } from "./actionTypes";
 
 const server_url = "http://localhost:5000/";
@@ -183,5 +183,102 @@ export const signInAccount = (username, password) => {
             .catch(error => {
                 dispatch({type: SIGN_IN_ACTION_TYPES.failure, payload: false});
             })
+    }
+};
+
+export const saveBuild = (event) => {
+    event.preventDefault();
+    return (dispatch, getState) => {
+        dispatch({ type: SAVE_BUILD_ACTION_TYPES.pending });
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        axios.post(server_url + "build/makeBuild",
+            {Build_Name: event.target[0].value, Owner: userInfo._id, ...getState().build})
+            .then(response => {
+                dispatch({ type: SAVE_BUILD_ACTION_TYPES.success });
+                dispatch({ type: SAVE_BUILD_ACTION_TYPES.updateUser.pending });
+                axios.post(server_url + "account/addBuild",
+                    { id: userInfo._id, buildId: response.data._id })
+                    .then (response => {
+                        dispatch({ type: SAVE_BUILD_ACTION_TYPES.updateUser.success, payload: response.data });
+                    })
+                    .catch(error => {
+                        dispatch({ type: SAVE_BUILD_ACTION_TYPES.updateUser.failure });
+                    })
+            })
+            .catch(error => {
+                dispatch({ type: SAVE_BUILD_ACTION_TYPES.failure });
+            })
+    }
+
+};
+
+export const fetchBuilds = () => {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    let index = -1;
+    return dispatch => {
+        userInfo.Builds.forEach(b => {
+            axios.get(server_url + `build/getBuild/${b}`)
+                .then(response => {
+                    index++;
+                    dispatch({type: UPDATE_VIEW_BUILDS_ACTION_TYPES.startNewObject, payload: {index: index}});
+                    if (response.data.Build_Name) {
+
+                        dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
+                            payload: {index: index, key: "Build_Name", value: response.data.Build_Name}});
+                        if (response.data.CPU) {
+                            axios.get(server_url + `cpu/getCPU/${response.data.CPU}`)
+                                .then(response => {
+                                    dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
+                                        payload: {index: index, key: "CPU", value: response.data.Name}});
+                                })
+                        }
+                        if (response.data.GPU) {
+                            axios.get(server_url + `gpu/getGPU/${response.data.GPU}`)
+                                .then(response => {
+                                    dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
+                                        payload: {index: index, key: "GPU", value: response.data.Name}});
+                                })
+                        }
+                        if (response.data.Motherboard) {
+                            axios.get(server_url + `motherboard/getMobo/${response.data.Motherboard}`)
+                                .then(response => {
+                                    dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
+                                        payload: {index: index, key: "Motherboard", value: response.data.Name}});
+                                })
+                        }
+                        if (response.data.RAM) {
+                            axios.get(server_url + `cpu/getRAM/${response.data.RAM}`)
+                                .then(response => {
+                                    dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
+                                        payload: {index: index, key: "RAM", value: response.data.Name}});
+                                })
+                        }
+                        if (response.data.Case) {
+                            axios.get(server_url + `case/getCase/${response.data.Case}`)
+                                .then(response => {
+                                    dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
+                                        payload: {index: index, key: "Case", value: response.data.Name}});
+                                })
+                        }
+                        if (response.data.PS) {
+                            axios.get(server_url + `power_supply/getPS/${response.data.PS}`)
+                                .then(response => {
+                                    dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
+                                        payload: {index: index, key: "Power Supply", value: response.data.Name}});
+                                })
+                        }
+                        if (response.data.Storage) {
+                            response.data.Storage.forEach(s => {
+                                axios.get(server_url + `storage/getStorage/${s}`)
+                                    .then(response => {
+                                        dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
+                                            payload: {index: index, key: "Storage", value: response.data.Name}});
+                                    })
+                            });
+
+                        }
+                    }
+                })
+        });
     }
 };

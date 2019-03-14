@@ -139,4 +139,11 @@ router.get("/getPowers", (req, res, next) => {
         })
         .catch(next)
 });
+
+router.get("/getStorage/:id",(req, res, next) =>{
+    Stor.findById(req.params.id)
+        .then(data => res.json(data))
+        .catch(next)
+});
+
 module.exports = router;

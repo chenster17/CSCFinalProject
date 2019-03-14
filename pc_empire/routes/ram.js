@@ -113,4 +113,10 @@ router.get("/getSlots", (req, res, next) => {
         })
         .catch(next)
 });
+
+router.get("/getRAM/:id",(req, res, next) =>{
+    RAM.findById(req.params.id)
+        .then(data => res.json(data))
+        .catch(next)
+});
 module.exports = router;

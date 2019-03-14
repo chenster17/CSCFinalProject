@@ -185,4 +185,10 @@ router.get("/getPrices", (req, res, next) => {
         .catch(next)
 });
 
+router.get("/getMobo/:id",(req, res, next) =>{
+    Mobo.findById(req.params.id)
+        .then(data => res.json(data))
+        .catch(next)
+});
+
 module.exports = router;

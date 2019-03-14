@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 
-import SliderComponent from '../Components/SliderComponent';
-import BuildAddButtonComponent from '../Components/BuildAddButtonComponent';
+import SliderComponent from './SliderComponent';
+import BuildAddButtonComponent from './BuildAddButtonComponent';
 
 export default class ProductListComponent extends Component {
     render() {
@@ -72,7 +72,7 @@ export default class ProductListComponent extends Component {
                                 {
                                     this.props.products.map(p => {
                                         return(
-                                        
+
                                             <tr key={`row-${p.Name}`}>
                                                 {
                                                     this.props.searchHeaders.map(h => {
@@ -81,21 +81,21 @@ export default class ProductListComponent extends Component {
                                                         url = url.concat(`/part/${p._id}`);
                                                         url = `/part/${p._id}`;
                                                         return (
-                                                        
+
                                                             <a onClick={() => `${this.props.history.push(url)}`}><td key={`product-header-${p[h]}`}>{p[h]}</td></a>
                                                         )
                                                     })
-                                                        
+
                                                 }
                                                 <td>
-                                                    <BuildAddButtonComponent 
+                                                    <BuildAddButtonComponent
                                                         ptype={this.props.productType}
                                                         _id={p._id}
                                                         handleAdd={this.props.handleAdd}
                                                     />
                                                 </td>
                                             </tr>
-                                        
+
                                         )
                                     })
                                 }

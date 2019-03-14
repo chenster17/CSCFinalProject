@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { HEADERS } from "../helpers/tableHeaders";
 import { PRODUCT_TYPES } from "../helpers/productTypes";
 import { handleRemove } from "../reducers/buildReducer";
+import {saveBuild} from "../helpers/apiRequests";
 
 class BuildPartsContainer extends Component {
     static propTypes = {
@@ -17,9 +18,10 @@ class BuildPartsContainer extends Component {
         RAM: PropTypes.array.isRequired,
         Storage: PropTypes.array.isRequired,
         'Case': PropTypes.string.isRequired,
-        handleRemove: PropTypes.func.isRequired
+        handleRemove: PropTypes.func.isRequired,
+        handleSaveBuild: PropTypes.func.isRequired
     };
-    
+
     render() {
         return (
             <div>
@@ -34,12 +36,13 @@ class BuildPartsContainer extends Component {
                     Storage={ this.props.Storage }
                     Case={ this.props['Case'] }
                     handleRemove={ this.props.handleRemove }
+                    handleSaveBuild={this.props.handleSaveBuild}
                 />
             </div>
         );
     }
 }
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
         CPU: state.build.CPU,
         Motherboard: state.build.Motherboard,
@@ -54,6 +57,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         handleRemove: (event) => {
             dispatch(handleRemove(event));
+        },
+        handleSaveBuild: (event) => {
+            dispatch(saveBuild(event));
         }
     }
 };

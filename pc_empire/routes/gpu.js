@@ -130,4 +130,10 @@ router.get("/getVRAMs", (req, res, next) => {
         .catch(next)
 });
 
+router.get("/getGPU/:id",(req, res, next) =>{
+    GPU.findById(req.params.id)
+        .then(data => res.json(data))
+        .catch(next)
+});
+
 module.exports = router;

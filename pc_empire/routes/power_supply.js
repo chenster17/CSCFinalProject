@@ -84,5 +84,10 @@ router.get("/getPowers", (req, res, next) => {
         .catch(next)
 });
 
+router.get("/getPS/:id",(req, res, next) =>{
+    PS.findById(req.params.id)
+        .then(data => res.json(data))
+        .catch(next)
+});
 
 module.exports = router;

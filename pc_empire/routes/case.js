@@ -84,4 +84,10 @@ router.get("/getPrices", (req, res, next) => {
         .catch(next)
 });
 
+router.get("/getCase/:id",(req, res, next) =>{
+    Case.findById(req.params.id)
+        .then(data => res.json(data))
+        .catch(next)
+});
+
 module.exports = router;

@@ -9,6 +9,7 @@ const GPUroutes = require('./routes/gpu');
 const RAMroutes = require('./routes/ram');
 const Storageroutes = require('./routes/storage');
 const Accountroutes = require('./routes/account');
+const Buildroutes = require('./routes/build');
 const path = require('path');
 require('dotenv').config();
 
@@ -40,6 +41,7 @@ app.use('/gpu', GPUroutes);
 app.use('/ram', RAMroutes);
 app.use('/storage', Storageroutes);
 app.use('/account', Accountroutes);
+app.use('/build', Buildroutes);
 
 app.use((err, req, res, next) => {
   console.log(err);

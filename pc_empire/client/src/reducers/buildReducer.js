@@ -13,7 +13,7 @@ const initialState = {
 export const handleAdd = (event) => {
     const ptype = event.currentTarget.value.split(",")[1];
     const id = event.currentTarget.value.split(",")[0];
-    
+
     switch (ptype) {
         case "CPU":
             return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.cpu, payload: id })};
@@ -29,13 +29,15 @@ export const handleAdd = (event) => {
             return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.storage, payload: id })};
         case "Case":
             return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES['case'], payload: id })};
-    }   
+        default:
+            return
+    }
 };
 
 export const handleRemove = (event) => {
     const ptype = event.currentTarget.value.split(",")[1];
     const id = event.currentTarget.value.split(",")[0];
-    
+
     switch (ptype) {
         case "CPU":
             return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.removecpu, payload: id })};
@@ -51,9 +53,10 @@ export const handleRemove = (event) => {
             return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.removestorage, payload: id })};
         case "Case":
             return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES['removecase'], payload: id })};
-    }   
+        default:
+            return
+    }
 };
-
 
 export const buildReducer = (state = initialState, action) => {
     switch (action.type) {

@@ -127,5 +127,10 @@ router.get("/getDistinctPrices", (req, res, next) => {
         .catch(next)
 });
 
+router.get("/getCPU/:id",(req, res, next) =>{
+    CPU.findById(req.params.id)
+        .then(data => res.json(data))
+        .catch(next)
+});
 
 module.exports = router;

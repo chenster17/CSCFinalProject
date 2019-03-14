@@ -20,7 +20,7 @@ class NavBarComponent extends Component {
                 <Navbar.Brand href="home">PC Empire</Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link href="#home">Top Rated</Nav.Link>
-                    <Nav.Link href="#features">My Builds</Nav.Link>
+                    <Nav.Link href="viewBuilds">My Builds</Nav.Link>
                     <Nav.Link href="#pricing">Pricing</Nav.Link>
                 </Nav>
                 {

@@ -19,7 +19,7 @@ router.get("/getOwner/:id", (req, res, next) => {
     Build.findById(req.params.id,{"Owner_id":1, "_id":0})
         .then(data => res.json(data))
         .catch(next)
-})
+});
 
 router.post("/makeBuild", (req,res,next) => {
     if (req.body.Build_Name) {
@@ -43,6 +43,6 @@ router.delete("/deleteBuild/:id", (req, res, next) =>{
     Build.findByIdAndDelete(req.params.id)
         .then(res.send())
         .catch(next)
-})
+});
 
 module.exports = router;
