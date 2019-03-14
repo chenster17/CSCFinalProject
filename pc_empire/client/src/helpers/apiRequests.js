@@ -192,7 +192,16 @@ export const saveBuild = (event) => {
         dispatch({ type: SAVE_BUILD_ACTION_TYPES.pending });
         const userInfo = JSON.parse(localStorage.getItem("userInfo"));
         axios.post(server_url + "build/makeBuild",
-            {Build_Name: event.target[0].value, Owner: userInfo._id, ...getState().build})
+            {Build_Name: event.target[0].value,
+                Owner: userInfo._id,
+                CPU: getState().build.CPU.id,
+                Case: getState().build.Case.id,
+                GPU: getState().build.GPU.id,
+                PS: getState().build.PS.id,
+                RAM: getState().build.RAM.id,
+                Storage: getState().build.Storage.id,
+                Motherboard: getState().build.Motherboard.id
+            })
             .then(response => {
                 dispatch({ type: SAVE_BUILD_ACTION_TYPES.success });
                 dispatch({ type: SAVE_BUILD_ACTION_TYPES.updateUser.pending });

@@ -50,7 +50,7 @@ const mapStateToProps = (state) => {
         PS: state.build.PS,
         RAM: state.build.RAM,
         Storage: state.build.Storage,
-        'Case': state.build['Case']
+        Case: state.build.Case
     }
 };
 const mapDispatchToProps = (dispatch) => {
