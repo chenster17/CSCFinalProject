@@ -1,5 +1,6 @@
 const CPU_HEADERS = [
     "CPU",
+    "Manufacturer",
     "Speed",
     "Cores",
     "TDP",
@@ -8,6 +9,7 @@ const CPU_HEADERS = [
 ];
 const SEARCH_CPU_HEADERS = [
     "Name",
+    "Manufacturer",
     "Clock",
     "Cores",
     "Power",

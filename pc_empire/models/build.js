@@ -7,10 +7,10 @@ const BuildSchema = new Schema({
     Build_Name: String,
     CPU: String,
     Case: String,
-    GPU: String,
+    GPU: Array,
     Motherboard: String,
     PS: String,
-    RAM: String,
+    RAM: Array,
     Storage: Array,
     Reviews: Array,
     Comments: Array

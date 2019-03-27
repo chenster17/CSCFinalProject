@@ -21,7 +21,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 const RootApp = () => (
     <Provider store={store}>
         <Router history={history}>
-            <App />
+            <App history={history}/>
         </Router>
     </Provider>
 );

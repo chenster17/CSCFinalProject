@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ProductListComponent from "../Components/ProductListComponent";
 
 import { HEADERS, SEARCH_HEADERS } from "../helpers/tableHeaders";
+import { SLIDER_FILTERABLES, CHECK_FILTERABLES } from "../helpers/filterables";
 import PropTypes from "prop-types";
 
 import { connect } from 'react-redux';

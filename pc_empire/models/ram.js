@@ -14,6 +14,6 @@ const RAMSchema = new Schema({
 
 //create model for pc_empire
 
-const Ram = mongoose.model('Ram', RAMSchema,'Ram');
+const RAM = mongoose.model('RAM', RAMSchema,'RAM');
 
-module.exports = Ram;
+module.exports = RAM;

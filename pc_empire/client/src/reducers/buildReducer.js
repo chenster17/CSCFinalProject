@@ -29,7 +29,7 @@ export const handleAdd = (event) => {
         case "Storage":
             return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.storage, payload: [id, name] })};
         case "Case":
-            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES['case'], payload: id })};
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES['case'], payload: [id, name] })};
         default:
             return
     }
@@ -53,7 +53,7 @@ export const handleRemove = (event) => {
         case "Storage":
             return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES.removestorage, payload: [id, name] })};
         case "Case":
-            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES['removecase'], payload: id })};
+            return dispatch => { dispatch({ type: BUILD_ITEM_ACTION_TYPES['removecase'], payload: [id, name] })};
         default:
             return
     }

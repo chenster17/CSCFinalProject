@@ -11,20 +11,19 @@ import { BrowserRouter, Route } from "react-router-dom";
 import {connect} from "react-redux";
 import { fetchUserInfo } from "./reducers/userInfoReducer";
 import ViewBuildsContainer from "./Containers/ViewBuildsContainer";
-import {fetchBuilds} from "./helpers/apiRequests";
 
 class App extends Component {
     static propTypes = {
-        builds: PropTypes.array.isRequired,
+        
         userInfo: PropTypes.object,
         isLoggedIn: PropTypes.bool.isRequired,
         handleLogOut: PropTypes.func.isRequired,
         fetchUserInfo: PropTypes.func.isRequired,
-        fetchBuilds: PropTypes.func.isRequired,
+
     };
 
     componentDidMount() {
-        this.props.fetchBuilds();
+        
     }
 
     render() {
@@ -38,7 +37,7 @@ class App extends Component {
                         <Route path="/products/:product_type" component={ProductListContainer} />
                         <Route path="/part/:_id" component={ProductPageContainer} />
                         <Route path="/login" render={() => <SignInOrRegisterContainer {...this.props}/>} />
-                        <Route path="/viewBuilds" render={() => <ViewBuildsContainer {...this.props}/>} />
+                        <Route path="/viewBuilds" component={ViewBuildsContainer} />
                     </div>
                 </BrowserRouter>
             </div>
@@ -49,7 +48,6 @@ class App extends Component {
 const mapStateToProps = state => {
     return {
         userInfo: state.userInfo,
-        builds: state.viewBuilds,
         isLoggedIn: localStorage.getItem("userInfo") !== null
     }
 };
@@ -62,9 +60,6 @@ const mapDispatchToProps = dispatch => {
         handleLogOut: () => {
             localStorage.removeItem("userInfo");
             dispatch(fetchUserInfo());
-        },
-        fetchBuilds: () => {
-            dispatch(fetchBuilds());
         }
     };
 };

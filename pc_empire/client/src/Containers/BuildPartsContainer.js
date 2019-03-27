@@ -11,13 +11,13 @@ import {saveBuild} from "../helpers/apiRequests";
 
 class BuildPartsContainer extends Component {
     static propTypes = {
-        CPU: PropTypes.string.isRequired,
-        Motherboard: PropTypes.string.isRequired,
+        CPU: PropTypes.object.isRequired,
+        Motherboard: PropTypes.object.isRequired,
         GPU: PropTypes.array.isRequired,
-        PS: PropTypes.string.isRequired,
+        PS: PropTypes.object.isRequired,
         RAM: PropTypes.array.isRequired,
         Storage: PropTypes.array.isRequired,
-        'Case': PropTypes.string.isRequired,
+        'Case': PropTypes.object.isRequired,
         handleRemove: PropTypes.func.isRequired,
         handleSaveBuild: PropTypes.func.isRequired
     };

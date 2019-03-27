@@ -191,15 +191,21 @@ export const saveBuild = (event) => {
     return (dispatch, getState) => {
         dispatch({ type: SAVE_BUILD_ACTION_TYPES.pending });
         const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        let RAMids = [];
+        getState().build.RAM.map(r => RAMids.push(r.id));
+        let GPUids = [];
+        getState().build.GPU.map(g => GPUids.push(g.id));
+        let Storageids = [];
+        getState().build.Storage.map(s => Storageids.push(s.id));
         axios.post(server_url + "build/makeBuild",
             {Build_Name: event.target[0].value,
                 Owner: userInfo._id,
                 CPU: getState().build.CPU.id,
                 Case: getState().build.Case.id,
-                GPU: getState().build.GPU.id,
+                GPU: GPUids,
                 PS: getState().build.PS.id,
-                RAM: getState().build.RAM.id,
-                Storage: getState().build.Storage.id,
+                RAM: RAMids,
+                Storage: Storageids,
                 Motherboard: getState().build.Motherboard.id
             })
             .then(response => {
@@ -229,51 +235,55 @@ export const fetchBuilds = () => {
             axios.get(server_url + `build/getBuild/${b}`)
                 .then(response => {
                     index++;
-                    dispatch({type: UPDATE_VIEW_BUILDS_ACTION_TYPES.startNewObject, payload: {index: index}});
+                    dispatch({type: UPDATE_VIEW_BUILDS_ACTION_TYPES.startNewObject, payload: {index: b}});
                     if (response.data.Build_Name) {
 
                         dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
-                            payload: {index: index, key: "Build_Name", value: response.data.Build_Name}});
+                            payload: {index: b, key: "Build_Name", value: response.data.Build_Name}});
                         if (response.data.CPU) {
                             axios.get(server_url + `cpu/getCPU/${response.data.CPU}`)
                                 .then(response => {
                                     dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
-                                        payload: {index: index, key: "CPU", value: response.data.Name}});
+                                        payload: {index: b, key: "CPU", value: response.data.Name}});
                                 })
                         }
                         if (response.data.GPU) {
-                            axios.get(server_url + `gpu/getGPU/${response.data.GPU}`)
-                                .then(response => {
-                                    dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
-                                        payload: {index: index, key: "GPU", value: response.data.Name}});
-                                })
+                            response.data.GPU.forEach(g => {
+                                axios.get(server_url + `gpu/getGPU/${g}`)
+                                    .then(response => {
+                                        dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
+                                            payload: {index: b, key: "GPU", value: response.data.Name}});
+                                    })
+                            });
                         }
                         if (response.data.Motherboard) {
                             axios.get(server_url + `motherboard/getMobo/${response.data.Motherboard}`)
                                 .then(response => {
                                     dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
-                                        payload: {index: index, key: "Motherboard", value: response.data.Name}});
+                                        payload: {index: b, key: "Motherboard", value: response.data.Name}});
                                 })
                         }
                         if (response.data.RAM) {
-                            axios.get(server_url + `cpu/getRAM/${response.data.RAM}`)
-                                .then(response => {
-                                    dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
-                                        payload: {index: index, key: "RAM", value: response.data.Name}});
-                                })
+                            response.data.RAM.forEach(r => {
+                                axios.get(server_url + `ram/getRAM/${r}`)
+                                    .then(response => {
+                                        dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
+                                            payload: {index: b, key: "RAM", value: response.data.Name}});
+                                    })
+                            });
                         }
                         if (response.data.Case) {
                             axios.get(server_url + `case/getCase/${response.data.Case}`)
                                 .then(response => {
                                     dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
-                                        payload: {index: index, key: "Case", value: response.data.Name}});
+                                        payload: {index: b, key: "Case", value: response.data.Name}});
                                 })
                         }
                         if (response.data.PS) {
                             axios.get(server_url + `power_supply/getPS/${response.data.PS}`)
                                 .then(response => {
                                     dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
-                                        payload: {index: index, key: "Power Supply", value: response.data.Name}});
+                                        payload: {index: b, key: "Power Supply", value: response.data.Name}});
                                 })
                         }
                         if (response.data.Storage) {
@@ -281,7 +291,7 @@ export const fetchBuilds = () => {
                                 axios.get(server_url + `storage/getStorage/${s}`)
                                     .then(response => {
                                         dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
-                                            payload: {index: index, key: "Storage", value: response.data.Name}});
+                                            payload: {index: b, key: "Storage", value: response.data.Name}});
                                     })
                             });
 

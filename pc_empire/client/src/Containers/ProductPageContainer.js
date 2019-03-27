@@ -23,7 +23,6 @@ class ProductPageContainer extends Component {
         productType: PropTypes.string.isRequired
     };
     componentDidMount() {
-        console.log("DID MOUNT");
         this.props.fetchAllMobos();
         this.props.fetchAllCpus();
         this.props.fetchAllGPUs();
@@ -34,7 +33,6 @@ class ProductPageContainer extends Component {
         
     }
     render() {
-        console.log(this.props);
         const tableHeaders = FULL_HEADERS[this.props.productType];
         const search_Headers = SEARCH_FULL_HEADERS[this.props.productType];
         return tableHeaders ? (
@@ -54,8 +52,6 @@ class ProductPageContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log("Part state to props fired");
-    console.log(state);
     const id = ownProps.match.params._id;
     var prod = null;
     var pType = null;
@@ -77,7 +73,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    console.log("Part dispatch to props fired");
     return {
         fetchAllCpus: () => {
             dispatch(fetchAllCpus());

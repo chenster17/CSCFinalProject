@@ -60,7 +60,7 @@ export default class ProductListComponent extends Component {
                         </Row>
                     </Col>
                     <Col md={8} id='itemDisplay'>
-                        <Table striped>
+                        <Table striped responsive>
                             <thead>
                                 <tr>
                                     {
