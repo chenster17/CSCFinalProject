@@ -230,7 +230,7 @@ export const fetchBuilds = () => {
                 .then(response => {
                     index++;
                     dispatch({type: UPDATE_VIEW_BUILDS_ACTION_TYPES.startNewObject, payload: {index: index}});
-                    if (response.data.Build_Name) {
+                    if (response.data && response.data.Build_Name) {
 
                         dispatch({ type: UPDATE_VIEW_BUILDS_ACTION_TYPES.addKeyValuePair,
                             payload: {index: index, key: "Build_Name", value: response.data.Build_Name}});

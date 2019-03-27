@@ -1,31 +1,32 @@
 import React from "react";
 import "../Styles/App.css";
 import { withRouter } from "react-router-dom"
+import start_a_build from "../images/start_a_build.jpg";
+import {Col, Row} from "react-bootstrap";
+
 
 const ListButton = withRouter(({ history }) => (
-    <button className="infoButton"
-        type="button"
-        onClick={() => { history.push("/list") }}
-    >
-        Start Custom Build
-    </button>
+    <Row>
+        <Col id="frontpage1_img_div" md={4}>
+            <div onClick={() => { history.push("/list") }} class="frontpage1_img">
+                <p class="img_desc">Search Pre-Built Computers</p>
+            </div>
+        </Col>
+        <Col id="frontpage2_img_div" md={4}>
+            <div onClick={() => { history.push("/list") }} class="frontpage2_img">
+                <p class="img_desc">Start New Build</p>
+            </div>
+        </Col>
+        <Col id="frontpage3_img_div" md={4}>
+            <div onClick={() => { history.push("/list") }} class="frontpage3_img">
+                <p class="img_desc">Browse User Builds</p>
+            </div>
+        </Col>
+    </Row>
 ));
 
 const MainPageComponent = () => (
-    <section id="info">
-        <section className="infoBox" id="infoBox1">
-            <p>Option 1 text</p>
-            <button className="infoButton">Search Pre-Built Computers</button>
-        </section>
-        <section className="infoBox" id="infoBox2">
-            <p>Option 2 text</p>
-            <ListButton />
-        </section>
-        <section className="infoBox" id="infoBox3">
-            <p>Option 3 text</p>
-            <button className="infoButton">Browse User Builds</button>
-        </section>
-    </section>
+    <ListButton/>
 );
 
 export default MainPageComponent;
