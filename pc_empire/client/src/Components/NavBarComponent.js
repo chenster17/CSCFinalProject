@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Nav, Navbar } from "react-bootstrap";
 import LogOutButtonComponent from "./LogOutButtonComponent";
+import logo from "../images/logo.png"
 
 class NavBarComponent extends Component {
     static propTypes = {
@@ -17,7 +18,13 @@ class NavBarComponent extends Component {
     render() {
         return (
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="home">PC Empire</Navbar.Brand>
+
+                <Navbar.Brand href="home">
+                    <div>
+                        <img src={logo} style={{maxHeight : "50px", maxWidth : "50px", paddingRight: "10px"}} />
+                        PC Empire
+                    </div>
+                </Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link href="#home">Top Rated</Nav.Link>
                     <Nav.Link /*onClick={() => `${this.props.history.push("viewBuilds")}`}*/ href="../viewBuilds">My Builds</Nav.Link>
