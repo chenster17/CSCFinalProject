@@ -22,5 +22,5 @@ to see them all neatly.
 
 #163966711: Make Logo: A logo was designed for our website to be displayed on the front page.
 
-Implementing these features allowed us to finish the most common use case of this project, then made it look more appealing 
-to the users.
+Implementing these features allowed us to finish the most common use case of this project, namely allowing users to create and
+then save builds of parts from the website, then made it look more appealing to the users.
