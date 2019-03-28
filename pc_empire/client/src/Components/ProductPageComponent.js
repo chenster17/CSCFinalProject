@@ -10,7 +10,7 @@ export default class ProductPageComponent extends Component {
             <Container>
                 <Row>
                     <Col md="auto">
-                        <img src="./img/test1.jpg" width="250" height="250" />
+                        <img src={`/images/${this.props.product._id}.jpg`} width="250" height="250" />
                     </Col>
                 </Row>
                 <Row>
