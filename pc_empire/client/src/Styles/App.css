@@ -12,6 +12,17 @@
     margin-left: 0px;
     position: relative;
 }
+.productLink:hover{
+    cursor: pointer;
+    color: blue;
+}
+.buildTable{
+    margin-top: 10px;
+    background-color: lightblue;
+}
+.buildMultiPartTable{
+    background-color: teal;
+}
 .row{
     position: relative;
     width:100%;
@@ -94,16 +105,19 @@
 }
 
 .frontpage1_img:hover .img_desc{
+    cursor: pointer;
     visibility: visible;
     opacity: .7;
     transition: opacity 1s, visibility 1s;
 }
 .frontpage2_img:hover .img_desc{
+    cursor: pointer;
     visibility: visible;
     opacity: .7;
     transition: opacity 1s, visibility 1s;
 }
 .frontpage3_img:hover .img_desc{
+    cursor: pointer;
     visibility: visible;
     opacity: .7;
     transition: opacity 1s, visibility 1s;

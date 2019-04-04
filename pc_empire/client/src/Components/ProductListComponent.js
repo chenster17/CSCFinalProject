@@ -73,7 +73,7 @@ export default class ProductListComponent extends Component {
                                     this.props.products.map(p => {
                                         return(
 
-                                            <tr key={`row-${p.Name}`}>
+                                            <tr key={`row-${p.Name}`} className='productLink'>
                                                 {
                                                     this.props.searchHeaders.map(h => {
                                                         var url = window.location.href;
@@ -81,7 +81,7 @@ export default class ProductListComponent extends Component {
                                                         url = url.concat(`/part/${p._id}`);
                                                         url = `/part/${p._id}`;
                                                         return (
-                                                            <td key={`product-header-${p[h]}`}><a onClick={() => `${this.props.history.push(url)}`}>{p[h]}</a></td>
+                                                            <td onClick={() => `${this.props.history.push(url)}`} key={`product-header-${p[h]}`}><a>{p[h]}</a></td>
                                                         )
                                                     })
 

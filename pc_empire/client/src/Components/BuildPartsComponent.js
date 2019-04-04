@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import {Row, Col, Table, Form, Button} from "react-bootstrap";
-
+import {toast} from 'react-toastify';
+import {css} from 'glamor';
 import ProductButtonComponent from "./ProductButtonComponent";
 import BuildRemoveButtonComponent from '../Components/BuildRemoveButtonComponent';
 
@@ -82,7 +83,23 @@ export default class BuildPartsComponent extends Component {
                     </Table>
                 </Row>
                 <Row>
-                    <Form onSubmit={event => this.props.handleSaveBuild(event)}>
+                    <Form onSubmit={event => 
+                        {
+                            this.props.handleSaveBuild(event)
+                            toast.success(`"${event.target[0].value}" saved as build`, 
+                            {
+                                position: toast.POSITION.TOP_RIGHT,
+                                autoClose: 5000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                className: css({
+                                    background:"darkgray !important",
+                                    color: "white !important"
+                                })
+                            });
+                        }}>
                         <Form.Row>
                             <Col>
                                 <Form.Group controlId="formGridBuildName">

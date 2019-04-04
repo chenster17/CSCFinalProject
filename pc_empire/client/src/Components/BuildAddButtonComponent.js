@@ -1,18 +1,39 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
+import {toast} from 'react-toastify';
+import {css} from 'glamor';
 
 export default class BuildAddButtonComponent extends Component {
     render() {
         return (
-            <Button
-                variant="primary"
+            <div>
+                <Button
+                    variant="primary"
+                    
+                    value={[ this.props._id , this.props.Name, this.props.ptype ]}
+                    onClick={ (event) => 
+                    {
+                        this.props.handleAdd(event);
+                        toast.success(this.props.Name + " added", 
+                        {
+                            position: toast.POSITION.TOP_RIGHT,
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            className: css({
+                                background:"darkgray !important",
+                                color: "white !important"
+                            })
+                        });
+                    }}
+                >
+                    Add to Build
+                </Button>
                 
-                value={[ this.props._id , this.props.Name, this.props.ptype ]}
-                onClick={ this.props.handleAdd }
-            >
-                Add to Build
-            </Button>
+            </div>
         );
     }
 }

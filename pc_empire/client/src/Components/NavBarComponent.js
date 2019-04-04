@@ -26,9 +26,7 @@ class NavBarComponent extends Component {
                     </div>
                 </Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link href="#home">Top Rated</Nav.Link>
                     <Nav.Link /*onClick={() => `${this.props.history.push("viewBuilds")}`}*/ href="../viewBuilds">My Builds</Nav.Link>
-                    <Nav.Link href="#pricing">Pricing</Nav.Link>
                 </Nav>
                 {
                     this.props.userInfo ?

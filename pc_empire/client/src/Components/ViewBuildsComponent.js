@@ -22,7 +22,7 @@ export default class ViewBuildsComponent extends Component {
                         Object.getOwnPropertyNames(this.props.builds).map(b => {
                             
                             return (
-                                <Table striped bordered responsive key={`buildtable-${b}`}>
+                                <Table striped bordered responsive key={`buildtable-${b}`} className={'buildTable'}>
                                     <tbody>
                                     <tr  key={`buildrow-Build_Name`}>
                                         <th style={{width:'30%'}} >Name</th>
@@ -36,7 +36,7 @@ export default class ViewBuildsComponent extends Component {
                                                 <tr key={`buildrow-${b}-${p}`}>
                                                     <th>{p}</th>
                                                     <td>
-                                                    <Table striped key={`table-${b}-${p}`}>
+                                                    <Table responsive striped key={`table-${b}-${p}`} className={'buildMultiPartTable'} style={{backgroundColor:'lightgray'}}>
                                                     <tbody>
                                                         {
                                                             this.props.builds[b][p].map(item => {

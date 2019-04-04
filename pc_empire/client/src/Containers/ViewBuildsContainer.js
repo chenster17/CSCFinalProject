@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {fetchBuilds} from "../helpers/apiRequests";
 import { fetchUserInfo } from "../reducers/userInfoReducer";
 import { PRODUCT_TYPES } from "../helpers/productTypes";
-
+import {Redirect} from 'react-router';
 class ViewBuildsContainer extends Component {
     static propTypes = {
         userInfo: PropTypes.object,
@@ -20,6 +20,7 @@ class ViewBuildsContainer extends Component {
     }
     
     render() {
+        if (this.props.isLoggedIn){
         return (
             <div>
                 <ViewBuildsComponent 
@@ -28,7 +29,11 @@ class ViewBuildsContainer extends Component {
                     productTypes = {PRODUCT_TYPES}
                 />
             </div>
-        )
+        )} else {
+            return (
+                <Redirect to="/login"/>
+            )
+        }
     }
 }
 

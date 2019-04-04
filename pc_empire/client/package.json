@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
+    "glamor": "^2.20.40",
     "history": "^4.7.2",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.7",
@@ -19,6 +20,7 @@
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^4.0.8",
     "react-scripts": "2.1.5",
+    "react-toastify": "^5.0.0-rc.6",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
