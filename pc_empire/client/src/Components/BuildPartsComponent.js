@@ -107,7 +107,8 @@ export default class BuildPartsComponent extends Component {
                                 </Form.Group>
                             </Col>
                             <Col>
-                                <Button variant="primary" type="submit">
+                                <Button variant="primary" type="submit"
+                                    disabled={!this.props.isLoggedIn}>
                                     Save build for later
                                 </Button>
                             </Col>

@@ -37,6 +37,7 @@ class BuildPartsContainer extends Component {
                     Case={ this.props['Case'] }
                     handleRemove={ this.props.handleRemove }
                     handleSaveBuild={this.props.handleSaveBuild}
+                    isLoggedIn={this.props.isLoggedIn}
                 />
             </div>
         );
@@ -50,7 +51,8 @@ const mapStateToProps = (state) => {
         PS: state.build.PS,
         RAM: state.build.RAM,
         Storage: state.build.Storage,
-        Case: state.build.Case
+        Case: state.build.Case,
+        isLoggedIn: state.userInfo !== null
     }
 };
 const mapDispatchToProps = (dispatch) => {
